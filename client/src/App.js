@@ -4,11 +4,13 @@ import Events from './pages/Events';
 import Locations from './pages/Locations';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import { Nav } from './components/Nav';
 import './App.css';
 
 const App = () => (
   <Router>
     <div>
+      <Nav></Nav>
       <Switch>
         <Route exact path='/' component={Login} />
         <Route exact path='/profile' component={Profile} />
