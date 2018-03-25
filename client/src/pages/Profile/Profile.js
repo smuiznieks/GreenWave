@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 
-class Events extends Component {
+class Profile extends Component {
     render() {
         return (
             <Container>
             </Container>
         );
-    }  
+    }    
 }
 
-export default Events;
+export default Profile;
