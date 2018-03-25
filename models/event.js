@@ -1,8 +1,8 @@
-var mongoose= require('mongoose');
+const mongoose= require('mongoose');
 
-var Schema= mongoose.Schema;
+const Schema= mongoose.Schema;
 
-var EventSchema= new Schema({
+const EventSchema= new Schema({
 
 	EventName:{
 		type: String,
@@ -17,12 +17,14 @@ var EventSchema= new Schema({
 	EventDate:{
 		type: Date,
 		default: Date.now
+		required: true
 	}
 
 	Location:{
 		type: String,
+		required: true
 	}
 });
 
-var User=mongoose.model("Event",EventSchema);
+const User=mongoose.model("Event",EventSchema);
 module.exports=User;
