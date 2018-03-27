@@ -1,4 +1,4 @@
 module.exports = {
-  event: require("./event"),
-  location: require("./location")
+    User: require('./User')
 };
+
