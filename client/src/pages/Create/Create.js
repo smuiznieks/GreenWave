@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 
-class Login extends Component {
-    state = {
-        user: ''
-    };
-
+class Create extends Component {
     render() {
         return (
             <Container>
-                <Row>
-                    
-                </Row>
             </Container>
         );
-    }
+    }  
 }
 
-export default Login;
+export default Create;
