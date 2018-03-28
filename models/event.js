@@ -9,7 +9,7 @@ const EventSchema= new Schema({
 		required: true
 	}
 
-	Time: {
+	Time:{
 		type: Number,
 		required: true
 	}
