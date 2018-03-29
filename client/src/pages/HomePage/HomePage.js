@@ -1,20 +1,61 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
+import { List, ListItem } from '../../components/List';
+import { withUser } from '../../services/withUser';
 
 class HomePage extends Component {
-    state = {
-        user: ''
-    };
-
-    render() {
-        return (
-            <Container>
-                <Row>
-                    <h1>Welcome to GreenWave</h1>
-                </Row>
-            </Container>
-        );
+  state = {
+    stuff: null
+  }
+  componentDidMount() {
+    // only try loading stuff if the user is logged in.
+    if (!this.props.user) {
+      return;
     }
+
+    axios.get('/api/stuff')
+      .then(res => {
+        this.setState({
+          stuff: res.data
+        });
+      })
+      .catch(err => {
+        // if we got an error, we'll just log it and set stuff to an empty array
+        console.log(err);
+        this.setState({
+          stuff: []
+        });
+      });
+  }
+  
+  render() {
+    const { user } = this.props; // get the user prop from props
+    const { stuff } = this.state; // get stuff from state
+
+    return (
+      <Container>
+        <Row>
+          {user && stuff &&
+            <div>
+              Welcome back, {user.username}!
+              <List>
+                {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
+              </List>
+            </div>
+          }
+          {user && !stuff &&
+            <div>Hold on, looking for your stuff...</div>
+          }
+          {!user &&
+            <div>Hey! I don't recognize you! Register and log in using the link above</div>
+          }
+        </Row>
+      </Container>
+    );
+  }
 }
 
-export default HomePage;
+// withUser function will wrap the specified component in another component that will
+// inject the currently logged in user as a prop called "user"
+export default withUser(HomePage);
