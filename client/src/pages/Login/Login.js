@@ -1,29 +1,9 @@
-// import React, { Component } from 'react';
-// import { Col, Row, Container } from '../../components/Grid';
-
-// class Login extends Component {
-//     state = {
-//         user: ''
-//     };
-
-//     render() {
-//         return (
-//             <Container>
-//                 <Row>
-                    
-//                 </Row>
-//             </Container>
-//         );
-//     }
-// }
-
-// export default Login;
-
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { Link } from 'react-router-dom';
 import { update } from '../../services/withUser';
+import { LoginBtn, LoginInput } from '../../components/LoginConsole';
 
 class LoginPage extends Component {
   state = {
@@ -75,15 +55,26 @@ class LoginPage extends Component {
                                 {error}
                             </div>
                         }
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" className="form-control" id="username" placeholder="Username" onChange={this.handleInputChanged} />
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleInputChanged} />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <label for="username">Username</label>
+                        <LoginInput
+                            value={this.state.username}
+                            onChange={this.handleInputChange}
+                            name="username"
+                            placeholder="Username"
+                        />
+                        <label for="password">Password</label>
+                        <LoginInput
+                            value={this.state.password}
+                            onChange={this.handleInputChange}
+                            // type="password"
+                            name="password"
+                            placeholder="Password"
+                        />
+                        <LoginBtn
+                          onClick={this.handleLogin}
+                        >
+                          Log In
+                        </LoginBtn>
                         <p>
                             <br />
                             or <Link to='/create'>Create an Account</Link>
