@@ -23,8 +23,6 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { Link } from 'react-router-dom';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
 import { update } from '../../services/withUser';
 
 class LoginPage extends Component {
@@ -67,50 +65,33 @@ class LoginPage extends Component {
     const { error } = this.state;
 
     return (
-      <Container>
-        <Row>
-          {/* <Col xs={6} xsOffset={3}> */}
-            <form onSubmit={this.handleLogin}>
-              <h1>Log In</h1>
-              {error &&
-                <div>
-                  {error}
-                </div>
-              }
-              <div>
-                <TextField
-                  name="username"
-                  hintText="Username"
-                  floatingLabelText="Username"
-                  onChange={this.handleInputChanged}
-                />
-              </div>
-              <div>
-                <TextField
-                  name="password"
-                  hintText="Password"
-                  floatingLabelText="Password"
-                  type="password"
-                  onChange={this.handleInputChanged}
-                />
-              </div>
-              <div>
-                <RaisedButton primary type="submit">
-                  Log In
-                </RaisedButton>
-              </div>
-              <p>
-                or
-              </p>
-              <p>
-                <Link to="/create">
-                Register
-                </Link>
-              </p>
-            </form>
-          {/* </Col> */}
-        </Row>
-      </Container>
+        <Container>
+            <Row>
+                {/* <Col xs={6} xsOffset={3}> */}
+                    <form onSubmit={this.handleLogin}>
+                        <h1>Log In</h1>
+                        {error &&
+                            <div>
+                                {error}
+                            </div>
+                        }
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" className="form-control" id="username" placeholder="Username" onChange={this.handleInputChanged} />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.handleInputChanged} />
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <p>
+                            <br />
+                            or <Link to='/create'>Create an Account</Link>
+                        </p>
+                    </form>
+                {/* </Col> */}
+            </Row>
+        </Container>
     );
   }
 }

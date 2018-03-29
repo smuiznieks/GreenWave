@@ -1,10 +1,8 @@
-import axios from 'axios';
-import React, { Component, Fragment } from 'react';
+// import axios from 'axios';
+// import React, { Component, Fragment } from 'react';
+// import { withUser, update } from './services/withUser';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-import { withUser, update } from './services/withUser';
-
 import Create from './pages/Create';
 import Events from './pages/Events';
 import HomePage from './pages/HomePage';
@@ -12,7 +10,6 @@ import Locations from './pages/Locations';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
-
 import Navbar from './components/Navbar/Navbar';
 import './App.css';
 

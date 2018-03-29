@@ -1,26 +1,5 @@
-// import React, { Component } from 'react';
-// import { Col, Row, Container } from '../../components/Grid';
-
-// class HomePage extends Component {
-//     state = {
-//         user: ''
-//     };
-
-//     render() {
-//         return (
-//             <Container>
-//                 <Row>
-//                     <h1>Welcome to GreenWave</h1>
-//                 </Row>
-//             </Container>
-//         );
-//     }
-// }
-
-// export default HomePage;
-
 import axios from 'axios';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { List, ListItem } from '../../components/List';
 import { withUser } from '../../services/withUser';
@@ -49,27 +28,30 @@ class HomePage extends Component {
         });
       });
   }
+  
   render() {
     const { user } = this.props; // get the user prop from props
     const { stuff } = this.state; // get stuff from state
 
     return (
-      <Fragment>
-        {user && stuff &&
-          <div>
-            Welcome back, {user.username}!
-          <List>
-           {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
-          </List>
-          </div>
-        }
-        {user && !stuff &&
-          <div>Hold on, looking for your stuff...</div>
-        }
-        {!user &&
-          <div>Hey! I don't recognize you! Register and log in using the link above</div>
-        }
-      </Fragment>
+      <Container>
+        <Row>
+          {user && stuff &&
+            <div>
+              Welcome back, {user.username}!
+              <List>
+                {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
+              </List>
+            </div>
+          }
+          {user && !stuff &&
+            <div>Hold on, looking for your stuff...</div>
+          }
+          {!user &&
+            <div>Hey! I don't recognize you! Register and log in using the link above</div>
+          }
+        </Row>
+      </Container>
     );
   }
 }
