@@ -3,6 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 const db = require('../models');
 const mustBeLoggedIn = require('../mustBeLoggedIn');
+const userController = require('../controllers/userController')
 
 function getCurrentUser(req, res) {
   // I'm picking only the specific fields its OK for the audience to see publicly
