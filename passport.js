@@ -62,11 +62,14 @@ module.exports = (app) => {
   // the original and current hashes are the same, the user entered the correct password.
   passport.use(new LocalStrategy((username, password, done) => {
     const errorMsg = 'Invalid username or password';
-
+    console.log("LOOKING FOR USER TO LOGIN")
+    console.log(username, password);
     db.User.findOne({ username })
       .then(user => {
+        console.log(user)
         // if no matching user was found...
         if (!user) {
+          console.log("NO USER FOUND")
           return done(null, false, { message: errorMsg });
         }
 
