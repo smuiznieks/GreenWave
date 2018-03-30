@@ -26,5 +26,5 @@ const EventSchema= new Schema({
 	}
 });
 
-const Eve=mongoose.model("Event", EventSchema);
-module.exports=Eve;
+const Eve = mongoose.model("Event", EventSchema);
+module.exports = Eve;
