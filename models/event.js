@@ -13,11 +13,19 @@ const EventSchema= new Schema({
 		type: Number,
 		required: true
 	},
+	
+
+	date:{
+		type: Number,
+		required: true
+	},
+
 
 	location:{
 		type: String,
 		required: true
 	},
+
 
 	description:{
 		type: String
