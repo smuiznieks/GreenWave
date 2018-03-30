@@ -4,27 +4,32 @@ const Schema= mongoose.Schema;
 
 const EventSchema= new Schema({
 
-	EventName:{
+	title:{
 		type: String,
 		required: true
-	}
+	},
 
-	Time:{
+	time:{
 		type: Number,
 		required: true
-	}
+	},
 
-	EventDate:{
-		type: Date,
-		default: Date.now
+	location:{
+		type: String,
 		required: true
-	}
+	},
 
-	Location:{
+	description:{
 		type: String,
 		required: true
 	}
+
 });
 
+<<<<<<< HEAD
 const Eve = mongoose.model("Event", EventSchema);
 module.exports = Eve;
+=======
+const Event=mongoose.model("Event", EventSchema);
+module.exports=Event;
+>>>>>>> dd3b35505df01e7310d6c5391ac90a588bcac670
