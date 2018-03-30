@@ -4,23 +4,23 @@ const Schema= mongoose.Schema;
 
 const EventSchema= new Schema({
 
-	EventName:{
+	eventname:{
 		type: String,
 		required: true
 	},
 
-	Time:{
+	time:{
 		type: Number,
 		required: true
 	},
 
-	EventDate:{
+	eventdate:{
 		type: Date,
 		default: Date.now,
 		required: true
 	},
 
-	Location:{
+	location:{
 		type: String,
 		required: true
 	}
