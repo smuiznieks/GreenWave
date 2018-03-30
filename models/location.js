@@ -12,6 +12,4 @@ const LocSchema = new Schema({
         	type: String,
         	required:
 
-        }
-
 
