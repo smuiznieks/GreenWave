@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
-import DeleteBtn from "../../components/DeleteBtn";
+// import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
@@ -66,9 +66,9 @@ class Events extends Component {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
+            {/* <Jumbotron> */}
               <h1>What green event do you want to enter?</h1>
-            </Jumbotron>
+            {/* </Jumbotron> */}
             <form>
               <Input
                 value={this.state.title}
@@ -103,9 +103,9 @@ class Events extends Component {
             </form>
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
+            {/* <Jumbotron> */}
               <h1>Events On My List</h1>
-            </Jumbotron>
+            {/* </Jumbotron> */}
             {this.state.events.length ? (
               <List>
                 {this.state.events.map(event => {
@@ -116,7 +116,7 @@ class Events extends Component {
                           {event.title} by {event.author}
                         </strong>
                       </a>
-                      <DeleteBtn onClick={() => this.deleteEvent(event._id)} />
+                      {/* <DeleteBtn onClick={() => this.deleteEvent(event._id)} /> */}
                     </ListItem>
                   );
                 })}

@@ -24,7 +24,7 @@ class LoginPage extends Component {
 
     const { username, password } = this.state;
     const { history } = this.props;
-    console.log(this.state);
+    // console.log(this.state);
 
     // User authentication
     API.userLogin({
