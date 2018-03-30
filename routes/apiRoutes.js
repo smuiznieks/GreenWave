@@ -3,73 +3,19 @@ const passport = require('passport');
 const router = express.Router();
 const db = require('../models');
 const mustBeLoggedIn = require('../mustBeLoggedIn');
-const userController = require('../controllers/userController')
+const userController = require('../controllers/userController');
 
-function getCurrentUser(req, res) {
-  // I'm picking only the specific fields its OK for the audience to see publicly
-  // never send the whole user object in the response, and only show things it's OK
-  // for others to read (like ID, name, email address, etc.)
-  const { id, username } = req.user;
-  res.json({
-    id, username
-  });
-}
+// Create new user
+router.post('/users', userController.createUser);
 
-router.route('/auth')
-  // GET to /api/auth will return current logged in user info
-  .get((req, res) => {
-    if (!req.user) {
-      return res.status(401).json({
-        message: 'You are not currently logged in.'
-      })
-    }
+// Get current user
+router.get('/auth', userController.getUserDetails);
 
-    getCurrentUser(req, res);
-  })
-  // POST to /api/auth with username and password will authenticate the user
-  .post(passport.authenticate('local'), (req, res) => {
-    if (!req.user) {
-      return res.status(401).json({
-        message: 'Invalid username or password.'
-      })
-    }
+// User authentication
+router.post('/auth',passport.authenticate('local'), userController.userLogin);
 
-    getCurrentUser(req, res);
-  })
-  // DELETE to /api/auth will log the user out
-  .delete((req, res) => {
-    req.logout();
-    req.session.destroy();
-    res.json({
-      message: 'You have been logged out.'
-    });
-  });
-
-router.route('/users')
-  // POST to /api/users will create a new user
-  .post((req, res, next) => {
-    db.User.create(req.body)
-      .then(user => {
-        const { id, username } = user;
-        res.json({
-          id, username
-        });
-      })
-      .catch(err => {
-        // if this error code is thrown, that means the username already exists.
-        // let's handle that nicely by redirecting them back to the create screen
-        // with that flash message
-        if (err.code === 11000) {
-          res.status(400).json({
-            message: 'Username already in use.'
-          })
-        }
-
-        // otherwise, it's some nasty unexpected error, so we'll just send it off to
-        // to the next middleware to handle the error.
-        next(err);
-      });
-  });
+// User logout
+// router.delete('/auth', userController.userLogout);
 
 // this route is just returns an array of strings if the user is logged in
 // to demonstrate that we can ensure a user must be logged in to use a route
@@ -81,8 +27,8 @@ router.route('/stuff')
       'Beets',
       'Battlestar Galactica'
     ]);
-  });
-
+  }
+);
 
 module.exports = router;
 

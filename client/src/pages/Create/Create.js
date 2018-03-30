@@ -2,9 +2,9 @@ import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { LoginBtn, LoginInput } from '../../components/LoginConsole';
+import API from '../../utils/API';
 
 class Create extends Component {
-    
     state = {
         email: null,
         username: null,
@@ -21,18 +21,16 @@ class Create extends Component {
     }
     
     handleLogin = (event) => {
-        
         event.preventDefault();
-        
         const { email, username, password, confirmPassword } = this.state;
         const { history } = this.props;
         
-        // clear any previous errors so we don't confuse the user
+        // Clear previous errors
         this.setState({
             error: null
         });
 
-        // check that entered passwords match
+        // Check that passwords match
         if (password !== confirmPassword) {
             this.setState({
                 error: 'Passwords must match.'
@@ -40,23 +38,13 @@ class Create extends Component {
             return;
         };
 
-        // check to make sure they've entered a username and password.
-        // this is very poor validation, and there are better ways
-        // to do this in react, but this will suffice for the example
-        // if (!username || !password || !email) {
-        //     this.setState({
-        //         error: 'A valid email, username and password are required.'
-        //     });
-        //     return;
-        // }
-
-        // post an auth request
-        axios.post('/api/users', {
-            username,
-            password
+        // Create new user
+        API.createUser({
+            username: this.state.username,
+            password: this.state.password
         })
         .then(user => {
-            // if the response is successful, make them log in
+            // If response is successful, send to login page
             history.push('/login');
         })
         .catch(err => {

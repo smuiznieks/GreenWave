@@ -1,6 +1,5 @@
-const mongoose=require('mongoose');
 
-const Schema= mongoose.Schema;
+
 
 const LocSchema = new Schema({ 
         
@@ -16,6 +15,3 @@ const LocSchema = new Schema({
         }
 
 
-
-
-module.exports= mongoose.model('model', LocSchema),

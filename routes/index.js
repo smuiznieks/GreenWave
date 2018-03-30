@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 // add API routes to current router
 // NOTE: API routes must be added first, because htmlRoutes has a wildcard route
@@ -10,7 +9,7 @@ const router = express.Router();
 router.use('/api', require('./apiRoutes'));
 
 // add HTML routes to current router
-router.use(require('./htmlRoutes'));
+//router.use(require('./htmlRoutes'));
 
 
 module.exports = router;
