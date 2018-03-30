@@ -30,7 +30,7 @@ export const Navbar = (props) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-                <a className="nav-item nav-link" href="/">Home</a>
+                <a className="nav-item nav-link" href="/profile">Profile</a>
                 <a className="nav-item nav-link" href="/events">Events</a>
                 <a className="nav-item nav-link" href="/locations">Locations</a>
                 {user ?

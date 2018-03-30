@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require('../models');
 const mustBeLoggedIn = require('../mustBeLoggedIn');
 const userController = require('../controllers/userController');
+const locationsController = require('../controllers/locationsController');
 
 // Create new user
 router.post('/users', userController.createUser);
@@ -29,6 +30,9 @@ router.post('/auth',passport.authenticate('local'), userController.userLogin);
 //     ]);
 //   }
 // );
+
+// Create new location
+router.post('/locations', locationsController.saveLocation);
 
 module.exports = router;
 
