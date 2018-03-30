@@ -5,9 +5,9 @@ export const Dropdown = props => (
         <select className="form-control">
             <option value="Community">Community</option>
             <option value="Shop">Shop Green</option>
-            <option>Travel Green</option>
-            <option>etc</option>
-            <option>etc etc</option>
+            <option value="Travel">Travel Green</option>
+            <option value="etc">etc</option>
+            <option value="etc">etc etc</option>
         </select>
     </div>
 );

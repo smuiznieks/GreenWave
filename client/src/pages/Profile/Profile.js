@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Dropdown, Input, TextArea, FormBtn } from "../../components/Form";
+import { withUser } from '../../services/withUser';
 
 class Profile extends Component {
     state = {
@@ -20,7 +21,11 @@ class Profile extends Component {
         this.setState({
             [name]: value
         });
-    }
+    };
+
+    handleDropdownChange = (event) => {
+        this.setState({locCategory: event.target.value});
+    };
     
     handleSaveLocation = event => {
         event.preventDefault();
@@ -28,7 +33,8 @@ class Profile extends Component {
             title: this.state.locTitle,
             address: this.state.locAddress,
             zipcode: this.state.locZipcode,
-            category: this.state.locCategory
+            category: this.state.locCategory,
+            // createdBy: this.user.username
         })
         .then(res => {
             this.setState({
@@ -43,6 +49,7 @@ class Profile extends Component {
     };
 
     render() {
+        const { user } = this.props;
         const { status } = this.state;
         return (
             <Container fluid>
@@ -78,10 +85,20 @@ class Profile extends Component {
                                 name="locZipcode"
                                 placeholder="44113"
                             />
-                            <Dropdown 
-                                value={this.state.locCategory}
-                                onChange={this.handleInputChange}
-                            />
+                            {/* <Dropdown 
+                                value={this.state.locCategory} 
+                                onChange={this.handleDropdownChange}
+                            /> */}
+                            <div className="form-group">
+                                <label>Category</label>
+                                <select className="form-control" value={this.state.locCategory} onChange={this.handleDropdownChange}>
+                                    <option value="Community">Green Community</option>
+                                    <option value="Shop">Shop Green</option>
+                                    <option value="Travel">Travel Green</option>
+                                    <option value="Volunteer">Volunteer</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
                             <FormBtn
                                 // disabled={!(this.state.time && this.state.title)}
                                 onClick={this.handleSaveLocation}

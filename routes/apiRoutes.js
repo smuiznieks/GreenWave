@@ -16,7 +16,7 @@ router.get('/auth', userController.getUserDetails);
 router.post('/auth',passport.authenticate('local'), userController.userLogin);
 
 // User logout
-// router.delete('/auth', userController.userLogout);
+router.delete('/auth', userController.userLogout);
 
 // this route is just returns an array of strings if the user is logged in
 // to demonstrate that we can ensure a user must be logged in to use a route
