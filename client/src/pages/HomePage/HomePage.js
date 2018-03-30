@@ -12,12 +12,10 @@ class HomePage extends Component {
       <Container>
         <Row>
           {user &&
-            <div>
-              Welcome back, {user.username}!
-            </div>
+            <div>Hi there, {user.username}!</div>
           }
           {!user &&
-            <div>Hey! I don't recognize you! Register and log in using the link above</div>
+            <div>Hey! I don't recognize you! Log in using the link above</div>
           }
         </Row>
       </Container>
