@@ -14,5 +14,10 @@ export default {
     // Create new location
     saveLocation: function(locData) {
         return axios.post('/api/locations', locData)
+    },
+
+    // Create new event
+    saveEvent: function(eventData) {
+        return axios.post('/api/events', eventData)
     }
 };

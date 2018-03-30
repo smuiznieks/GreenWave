@@ -5,6 +5,7 @@ const db = require('../models');
 const mustBeLoggedIn = require('../mustBeLoggedIn');
 const userController = require('../controllers/userController');
 const locationsController = require('../controllers/locationsController');
+const eventsController = require('../controllers/eventsController');
 
 // Create new user
 router.post('/users', userController.createUser);
@@ -33,6 +34,9 @@ router.delete('/auth', userController.userLogout);
 
 // Create new location
 router.post('/locations', locationsController.saveLocation);
+
+// Create new event
+router.post('/events', eventsController.saveEvent);
 
 module.exports = router;
 
