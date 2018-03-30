@@ -7,18 +7,18 @@ const EventSchema= new Schema({
 	EventName:{
 		type: String,
 		required: true
-	}
+	},
 
 	Time:{
 		type: Number,
 		required: true
-	}
+	},
 
 	EventDate:{
 		type: Date,
-		default: Date.now
+		default: Date.now,
 		required: true
-	}
+	},
 
 	Location:{
 		type: String,
