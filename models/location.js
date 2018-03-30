@@ -3,7 +3,17 @@ const mongoose=require('mongoose');
 const Schema= mongoose.Schema;
 
 const LocSchema = new Schema({ 
-        location: { type: [Number], index: { type: '2dsphere', sparse: true}},
+        
+        address:{
+        	type: String,
+        	required: true
+        }
+
+        zipcode:{
+        	type: String,
+        	required:
+
+        }
 
 
 
