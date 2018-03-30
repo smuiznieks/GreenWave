@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
-import { MyMapComponent } from '../../components/Map';
+import { MyMapComponent, MapMarker, StyledMapWithAnInfoBox } from '../../components/Map';
 
 class Locations extends Component {
     render() {
         return (
             <Container>
-                <MyMapComponent>
-                    
-                </MyMapComponent>
+                <StyledMapWithAnInfoBox></StyledMapWithAnInfoBox>
             </Container>
         );
-    }  
+    }
 }
 
 export default Locations;
