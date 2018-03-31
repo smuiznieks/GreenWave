@@ -97,11 +97,6 @@ class Profile extends Component {
                                 </button>
                             </div>
                             <div class="modal-body">
-                            {status && 
-                                <div>
-                                    {status}
-                                </div>
-                            }
                             <form>
                                 <label htmlFor="locTitle">Location</label>
                                 <Input
@@ -147,6 +142,13 @@ class Profile extends Component {
                             </div>
                         </div>
                     </Modal>          
+                </Row>
+                <Row>
+                    {status && 
+                        <div className="card">
+                            {status}
+                        </div>
+                    }
                 </Row>
             </Container>
         );
