@@ -11,6 +11,7 @@ class HomePage extends Component {
     return (
       <Container>
         <Row>
+          {/* if user signed in */}
           {user &&
             <div>Hi there, {user.username}!</div>
           }
