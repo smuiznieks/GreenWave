@@ -1,54 +1,28 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
-import { List, ListItem } from '../../components/List';
 import { withUser } from '../../services/withUser';
+import "./HomePage.css";
 
 class HomePage extends Component {
-  state = {
-    stuff: null
-  }
-  componentDidMount() {
-    // only try loading stuff if the user is logged in.
-    if (!this.props.user) {
-      return;
-    }
-
-    axios.get('/api/stuff')
-      .then(res => {
-        this.setState({
-          stuff: res.data
-        });
-      })
-      .catch(err => {
-        // if we got an error, we'll just log it and set stuff to an empty array
-        console.log(err);
-        this.setState({
-          stuff: []
-        });
-      });
-  }
-  
   render() {
-    const { user } = this.props; // get the user prop from props
-    const { stuff } = this.state; // get stuff from state
-
+    // get the user prop from props
+    const { user } = this.props; 
     return (
       <Container>
         <Row>
-          {user && stuff &&
-            <div>
-              Welcome back, {user.username}!
-              <List>
-                {stuff.map((s, i) => <ListItem key={i} primaryText={s} />)}
-              </List>
-            </div>
-          }
-          {user && !stuff &&
-            <div>Hold on, looking for your stuff...</div>
+          <img src={require("./images/GreenWaveLogo.jpg")} alt="GreenWaveLogo" className="img-responsive" />
+          <h1>Welcome to GreenWave</h1>
+          <h2>GreenWave is a community of environmentally<br/>
+              conscious individuals looking to promote<br/>
+              more sustainable living in their local communities
+          </h2>
+          {/* if user signed in */}
+          {user &&
+            <div>Hi there, {user.username}!</div>
           }
           {!user &&
-            <div>Hey! I don't recognize you! Register and log in using the link above</div>
+            <div>Hey! I don't recognize you! Log in using the link above</div>
           }
         </Row>
       </Container>
@@ -56,6 +30,4 @@ class HomePage extends Component {
   }
 }
 
-// withUser function will wrap the specified component in another component that will
-// inject the currently logged in user as a prop called "user"
 export default withUser(HomePage);

@@ -4,27 +4,34 @@ const Schema= mongoose.Schema;
 
 const EventSchema= new Schema({
 
-	EventName:{
+	title:{
 		type: String,
 		required: true
-	}
+	},
 
-	Time:{
+	time:{
 		type: Number,
 		required: true
-	}
+	},
+	
 
-	EventDate:{
-		type: Date,
-		default: Date.now
-		required: true
-	}
+	date:{
+		type: Number,
+		// required: true
+	},
 
-	Location:{
+
+	location:{
 		type: String,
 		required: true
+	},
+
+
+	description:{
+		type: String
 	}
+
 });
 
-const Eve=mongoose.model("Event", EventSchema);
-module.exports=Eve;
+const Event=mongoose.model("Event", EventSchema);
+module.exports=Event;
