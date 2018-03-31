@@ -11,6 +11,7 @@ class Events extends Component {
   state = {
     events: [],
     time: "",
+    date: "",
     location: "",
     description: "",
     title: ""
@@ -53,6 +54,7 @@ class Events extends Component {
       API.saveEvent({
         title: this.state.title,
         time: this.state.time,
+        date: this.state.date,
         location: this.state.location,
         description: this.state.description
       })
@@ -75,6 +77,12 @@ class Events extends Component {
                 onChange={this.handleInputChange}
                 name="title"
                 placeholder="Title (required)"
+              />
+              <Input
+                value={this.state.date}
+                onChange={this.handleInputChange}
+                name="date"
+                placeholder="Date (required)"
               />
               <Input
                 value={this.state.time}
