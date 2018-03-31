@@ -5,6 +5,8 @@ import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import LoginMenu from './LoginMenu';
 import { update } from '../../services/withUser';
+import { withUser } from '../../services/withUser';
+
 
 export const Navbar = (props) => {
     const { user } = props;
