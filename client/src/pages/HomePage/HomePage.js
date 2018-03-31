@@ -1,26 +1,29 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
-import { List, ListItem } from '../../components/List';
-import { withUser } from '../../services/withUser';
+import "./HomePage.css";
 
 class HomePage extends Component {
-  render() {
-    // get the user prop from props
-    const { user } = this.props; 
-    return (
-      <Container>
-        <Row>
-          {user &&
-            <div>Hi there, {user.username}!</div>
-          }
-          {!user &&
-            <div>Hey! I don't recognize you! Log in using the link above</div>
-          }
-        </Row>
-      </Container>
-    );
-  }
-}
+
+    state = {
+        user: ''
+    };
+
+    render() {
+        return (
+            <Container fluid>
+                <Row>
+                    <img src={require("./images/GreenWaveLogo.jpg")} alt="GreenWaveLogo" className="img-responsive" />
+                    <h1>Welcome to GreenWave</h1>
+                </Row>
+                <Container classname="HomePage">
+                <h2>GreenWave is a community of environmentally<br/>
+                    conscious individuals looking to promote<br/>
+                    more sustainable living in their local communities
+                </h2>
+                </Container>
+            </Container>
+        );
+    }
 
 export default withUser(HomePage);
