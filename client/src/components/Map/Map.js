@@ -55,7 +55,7 @@ export const StyledMapWithAnInfoBox = compose(
 		defaultZoom={12}
 		defaultCenter={props.center}
 	> 
-
+       
 		<Marker
 			position={{ lat: 41.505493, lng: -81.681290 }}
 			onClick={props.onToggleOpen}

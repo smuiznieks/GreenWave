@@ -46,7 +46,7 @@ class Profile extends Component {
     handleSaveLocation = event => {
         event.preventDefault();
         this.setState({modalIsOpen: false});
-        API.saveLocation({
+        API.createLocation({
             title: this.state.locTitle,
             address: this.state.locAddress,
             zipcode: this.state.locZipcode,
@@ -103,21 +103,21 @@ class Profile extends Component {
                                 </div>
                             }
                             <form>
-                                <label for="locTitle">Location</label>
+                                <label htmlFor="locTitle">Location</label>
                                 <Input
                                     value={this.state.locTitle}
                                     onChange={this.handleInputChange}
                                     name="locTitle"
                                     placeholder="Office of Sustainability"
                                 />
-                                <label for="locAddress">Address</label>
+                                <label htmlFor="locAddress">Address</label>
                                 <Input
                                     value={this.state.locAddress}
                                     onChange={this.handleInputChange}
                                     name="locAddress"
                                     placeholder="230 West Huron Road"
                                 />
-                                <label for="locZipcode">Zipcode</label>
+                                <label htmlFor="locZipcode">Zipcode</label>
                                 <Input
                                     value={this.state.locZipcode}
                                     onChange={this.handleInputChange}
