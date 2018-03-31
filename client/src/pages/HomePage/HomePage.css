@@ -1,4 +1,12 @@
-body {
-	background-image: url("./images/GreenEnvironment(3).jpg");
-    z-index: -1;
+.Container {
+	background-color: green;  	
 }
+
+.Heading {
+	text-align: center;	 
+}
+
+.footer {
+	 background-color: #013220;
+}
+ 

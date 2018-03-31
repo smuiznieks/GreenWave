@@ -36,7 +36,7 @@ router.delete('/auth', userController.userLogout);
 router.post('/locations', locationsController.saveLocation);
 
 // Create new event
-router.post('/events', eventsController.saveEvent);
+router.post('/events', eventsController.createEvent);
 
 module.exports = router;
 
