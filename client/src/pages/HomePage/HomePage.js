@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import "./HomePage.css";
@@ -23,6 +24,5 @@ class HomePage extends Component {
             </Container>
         );
     }
-}
 
-export default HomePage;
+export default withUser(HomePage);
