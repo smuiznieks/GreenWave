@@ -9,5 +9,15 @@ export default {
     // User authentication
     userLogin: function(loginData) {
         return axios.post('/api/auth', loginData)
+    },
+
+    // Create new location
+    saveLocation: function(locData) {
+        return axios.post('/api/locations', locData)
+    },
+
+    // Create new event
+    saveEvent: function(eventData) {
+        return axios.post('/api/events', eventData)
     }
 };

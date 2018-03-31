@@ -65,12 +65,11 @@ module.exports = {
     },
 
     // User logout
-    // userLogout: function(req, res) {
-    //     // db.User.delete
-    //     req.logout();
-    //     req.session.destroy();
-    //     res.json({
-    //         message: 'You have been logged out.'
-    //     });
-    // }
+    userLogout: function(req, res) {
+        req.logout();
+        req.session.destroy();
+        res.json({
+            message: 'You have been logged out.'
+        });
+    }
 };

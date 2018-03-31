@@ -4,6 +4,8 @@ const router = express.Router();
 const db = require('../models');
 const mustBeLoggedIn = require('../mustBeLoggedIn');
 const userController = require('../controllers/userController');
+const locationsController = require('../controllers/locationsController');
+const eventsController = require('../controllers/eventsController');
 
 // Create new user
 router.post('/users', userController.createUser);
@@ -15,7 +17,7 @@ router.get('/auth', userController.getUserDetails);
 router.post('/auth',passport.authenticate('local'), userController.userLogin);
 
 // User logout
-// router.delete('/auth', userController.userLogout);
+router.delete('/auth', userController.userLogout);
 
 // this route is just returns an array of strings if the user is logged in
 // to demonstrate that we can ensure a user must be logged in to use a route
@@ -29,6 +31,12 @@ router.post('/auth',passport.authenticate('local'), userController.userLogin);
 //     ]);
 //   }
 // );
+
+// Create new location
+router.post('/locations', locationsController.saveLocation);
+
+// Create new event
+router.post('/events', eventsController.saveEvent);
 
 module.exports = router;
 
