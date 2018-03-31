@@ -12,16 +12,16 @@ class HomePage extends Component {
     render() {
         return (
             <Container fluid>
-                <Row>
+                <div className="logo">
                     <img src={require("./images/GreenWaveLogo.jpg")} alt="GreenWaveLogo" className="img-responsive" />
                     <h1>Welcome to GreenWave</h1>
-                </Row>
-                <Container classname="HomePage">
+                </div>
+                <div className="HomePage">
                 <h2>GreenWave is a community of environmentally<br/>
                     conscious individuals looking to promote<br/>
                     more sustainable living in their local communities
                 </h2>
-                </Container>
+                </div>
             </Container>
         );
     }
