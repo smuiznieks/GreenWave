@@ -12,7 +12,7 @@ export default {
     },
 
     // Create new location
-    saveLocation: function(locData) {
+    createLocation: function(locData) {
         return axios.post('/api/locations', locData)
     },
 
@@ -20,4 +20,4 @@ export default {
     saveEvent: function(eventData) {
         return axios.post('/api/events', eventData)
     }
-};
+}

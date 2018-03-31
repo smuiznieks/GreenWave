@@ -5,7 +5,10 @@ var LocationSchema = new Schema({
 	title: {
 		type: String,
 		required: true
-	},
+    },
+    latlng: {
+        type: Object
+    },
 	address: {
 		type: String,
         required: true,
@@ -17,7 +20,7 @@ var LocationSchema = new Schema({
     },
     category: {
         type: String,
-        // required: true
+        required: true
     },
     score: {
         type: Number,
