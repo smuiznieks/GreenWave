@@ -32,6 +32,7 @@ class Create extends Component {
             error: null
         });
 
+        //Check if a valid email was entered
         if (!this.validateEmail(email)) {
             this.setState({
                 error: 'You must enter a valid email'
