@@ -84,6 +84,7 @@ class Events extends Component {
                 name="date"
                 placeholder="Date (required)"
                 type="date"
+                id="date"
               />
               <Input
                 value={this.state.time}
@@ -91,6 +92,7 @@ class Events extends Component {
                 name="time"
                 placeholder="Time (required)"
                 type="time"
+                id="time"
               />
                 <Input
                 value={this.state.location}
