@@ -17,12 +17,8 @@ class HomePage extends Component {
               conscious individuals looking to promote<br/>
               more sustainable living in their local communities
           </h2>
-          {/* if user signed in */}
-          {user &&
-            <div>Hi there, {user.username}!</div>
-          }
           {!user &&
-            <div>Hey! I don't recognize you! Log in using the link above</div>
+            <h3>Hey! I don't recognize you! Log in using the link above</h3>
           }
         </Row>
       </Container>
