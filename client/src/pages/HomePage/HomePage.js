@@ -20,7 +20,7 @@ class HomePage extends Component {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           zIndex: -1,
-          color: "#90ee90",
+          color: "black",
           width: "100%",
           height: "100%"
         };
