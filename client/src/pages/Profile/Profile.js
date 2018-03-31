@@ -54,6 +54,11 @@ class Profile extends Component {
         return (
             <Container fluid>
                 <Row>
+                {user &&
+                    <h1>Hi there, {user.username}!</h1>
+                }
+                </Row>
+                <Row>
                     <Col size="md-6">
                         {/* <Jumbotron> */}
                             <h1>What green location do you want to enter?</h1>
@@ -113,4 +118,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default withUser(Profile);
