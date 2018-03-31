@@ -83,12 +83,14 @@ class Events extends Component {
                 onChange={this.handleInputChange}
                 name="date"
                 placeholder="Date (required)"
+                type="date"
               />
               <Input
                 value={this.state.time}
                 onChange={this.handleInputChange}
                 name="time"
                 placeholder="Time (required)"
+                type="time"
               />
                 <Input
                 value={this.state.location}
