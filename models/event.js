@@ -10,14 +10,14 @@ const EventSchema= new Schema({
 	},
 
 	time:{
-		type: Number,
+		type: String,
 		required: true
 	},
 	
 
 	date:{
-		type: Number,
-		// required: true
+		type: String,
+		required: true
 	},
 
 

@@ -61,7 +61,7 @@ class Create extends Component {
                 <Row>
                     {/* <Col xs={6} xsOffset={3}> */}
                         <form>
-                            <h1>Create Account</h1>
+                            <h1>Join the Movement</h1>
                             {error &&
                                 <div>
                                     {error}
@@ -71,7 +71,7 @@ class Create extends Component {
                             <LoginInput
                                 value={this.state.email}
                                 onChange={this.handleInputChange}
-                                // type="email"
+                                type="email"
                                 name="email"
                                 placeholder="Email"
                             />
@@ -86,14 +86,14 @@ class Create extends Component {
                             <LoginInput
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
-                                // type="password"
+                                type="password"
                                 name="password"
                                 placeholder="Password"
                             />
                             <LoginInput
                                 value={this.state.confirmPassword}
                                 onChange={this.handleInputChange}
-                                // type="password"
+                                type="password"
                                 name="confirmPassword"
                                 placeholder="Confirm Password"
                             />

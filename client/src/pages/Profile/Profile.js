@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
-// import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
@@ -45,7 +43,13 @@ class Profile extends Component {
     
     handleSaveLocation = event => {
         event.preventDefault();
-        this.setState({modalIsOpen: false});
+        this.setState({
+            locTitle: '',
+            locAddress: '',
+            locZipcode: '',
+            locCategory: '',
+            modalIsOpen: false
+        });
         API.createLocation({
             title: this.state.locTitle,
             address: this.state.locAddress,
@@ -73,7 +77,7 @@ class Profile extends Component {
             <Container>
                 <Row>
                 {user &&
-                    <h1>Hi there, {user.username}!</h1>
+                    <h1>Let's save Mother Earth together, {user.username}!</h1>
                 }
                 </Row>
                 <Row>
@@ -83,6 +87,7 @@ class Profile extends Component {
                     <button type="button" className="btn btn-primary" onClick={this.openModal}>
                         Create Event
                     </button>
+                </Row>
                     {/* Event Modal */}
                     <Modal
                         isOpen={this.state.modalIsOpen}
@@ -91,7 +96,7 @@ class Profile extends Component {
                     >
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Create Location</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Grow Your Community<br/>Add a Location</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
                                 <span aria-hidden="true">&times;</span>
                                 </button>
@@ -122,7 +127,7 @@ class Profile extends Component {
                                 <div className="form-group">
                                     <label>Category</label>
                                     <select className="form-control" value={this.state.locCategory} onChange={this.handleDropdownChange}>
-                                        <option disabled="">disbles</option>
+                                        <option disabled />
                                         <option value="Community">Green Community</option>
                                         <option value="Shop">Shop Green</option>
                                         <option value="Travel">Travel Green</option>
@@ -134,7 +139,7 @@ class Profile extends Component {
                             </div>
                             <div class="modal-footer">
                                 <FormBtn
-                                    // disabled={!(this.state.time && this.state.title)}
+                                    disabled={!(this.state.locTitle && this.state.locAddress && this.state.locZipcode && this.state.locCategory)}
                                     onClick={this.handleSaveLocation}
                                 >
                                     Submit Location
@@ -142,11 +147,13 @@ class Profile extends Component {
                             </div>
                         </div>
                     </Modal>          
-                </Row>
+                
                 <Row>
                     {status && 
                         <div className="card">
-                            {status}
+                            <div className="card-body">
+                                {status}
+                            </div>
                         </div>
                     }
                 </Row>
