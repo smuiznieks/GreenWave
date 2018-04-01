@@ -13,6 +13,7 @@ class Create extends Component {
         error: null
     }
 
+
     handleInputChange = (event) => {
         const { name, value } = event.target;
         this.setState({
@@ -24,11 +25,21 @@ class Create extends Component {
         event.preventDefault();
         const { email, username, password, confirmPassword } = this.state;
         const { history } = this.props;
+
         
         // Clear previous errors
         this.setState({
             error: null
         });
+
+        //Check if a valid email was entered
+        if (!this.validateEmail(email)) {
+            this.setState({
+                error: 'You must enter a valid email'
+            });
+            return;
+        }
+
 
         // Check that passwords match
         if (password !== confirmPassword) {
@@ -53,6 +64,12 @@ class Create extends Component {
             });
         });
     }
+
+    validateEmail(value) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(value);
+    }
+
 
     render() {
         const { error } = this.state;
