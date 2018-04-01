@@ -17,7 +17,7 @@ export default {
     },
 
     // Create new event
-    saveEvent: function(eventData) {
+    createEvent: function(eventData) {
         return axios.post('/api/events', eventData)
     }
 }

@@ -26,9 +26,13 @@ const EventSchema= new Schema({
 		required: true
 	},
 
-
 	description:{
 		type: String
+	},
+
+	createdBy:{
+		type: String,
+		required: true
 	}
 
 });

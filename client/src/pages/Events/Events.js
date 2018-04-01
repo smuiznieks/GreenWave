@@ -15,6 +15,7 @@ class Events extends Component {
     date: "",
     location: "",
     description: "",
+    status: null,
     title: ""
   };
 
@@ -51,20 +52,37 @@ class Events extends Component {
   // Then reload books from the database
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.time) {
-      API.saveEvent({
-        title: this.state.title,
-        time: this.state.time,
-        date: this.state.date,
-        location: this.state.location,
-        description: this.state.description
-      })
-        .then(res => this.loadEvents())
-        .catch(err => console.log(err));
-    }
+    this.setState({
+      events: [],
+      time: "",
+      date: "",
+      location: "",
+      description: "",
+      title: ""
+    })
+    API.createEvent({
+      title: this.state.title,
+      time: this.state.time,
+      date: this.state.date,
+      location: this.state.location,
+      description: this.state.description,
+      createdBy: this.props.user.username
+    })
+    .then(res => {
+      this.setState({
+          status: 'Thank you for adding to your community! Your event has been saved.'
+      });  
+    })
+    .catch(err => {
+        this.setState({
+          status: err.message
+        })
+    });
   };
 
   render() {
+    const { user } = this.props;
+    const { status } = this.state;
     return (
       <Container fluid>
         <Row>
@@ -72,6 +90,13 @@ class Events extends Component {
             {/* <Jumbotron> */}
               <h1>What green event do you want to enter?</h1>
             {/* </Jumbotron> */}
+            {status && 
+              <div className="card">
+                  <div className="card-body">
+                      {status}
+                  </div>
+              </div>
+            }
             <form>
               <Input
                 value={this.state.title}
