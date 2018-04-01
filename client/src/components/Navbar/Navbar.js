@@ -36,19 +36,20 @@ export const Navbar = (props) => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div className="navbar-nav">
-                    {!user ? 
+                {!user ? 
+                    <div className="navbar-nav">
                         <LoginButton onClick={handleLogIn} />
+                    </div>
                         :
-                        <span>
-                            <span>Welcome {user.username}</span>
+                    <div className="navbar-nav">
+                            <span className="navbar-brand">Hi there, {user.username}</span>
                             <a className="nav-item nav-link" href="/profile">Profile</a>
                             <a className="nav-item nav-link" href="/events">Events</a>
                             <a className="nav-item nav-link" href="/locations">Locations</a>
                             <LogoutButton onClick={handleLogOut} />
-                        </span>
+                    </div>
                     }
-                </div>
+                
             </div>
         </nav>
     );
