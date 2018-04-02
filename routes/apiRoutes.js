@@ -19,12 +19,17 @@ router.post('/auth',passport.authenticate('local'), userController.userLogin);
 // User logout
 router.delete('/auth', userController.userLogout);
 
-
 // Create new location
 router.post('/locations', locationsController.createLocation);
 
 // Create new event
 router.post('/events', eventsController.createEvent);
+
+// Get events created by current user
+router.get('/events', eventsController.getMyEvents);
+
+// Get locations created by current user
+router.get('/locations', locationsController.getMyLocations);
 
 module.exports = router;
 

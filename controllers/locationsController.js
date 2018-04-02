@@ -20,8 +20,14 @@ module.exports = {
             .catch(err => {
                 res.status(500).send(err);
             })
+    },
+
+    getMyLocations: function(req, res) {
+        db.Location.find().sort({ score: -1 })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
     }
-}
+};
 
 
 function googleSearch(address = '1600+Amphitheatre+Parkway,+Mountain+View,+CA') {

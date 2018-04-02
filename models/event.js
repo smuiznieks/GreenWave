@@ -20,7 +20,6 @@ const EventSchema= new Schema({
 		required: true
 	},
 
-
 	location:{
 		type: String,
 		required: true
@@ -33,6 +32,11 @@ const EventSchema= new Schema({
 	createdBy:{
 		type: String,
 		required: true
+	},
+
+	attendeeCount:{
+		type: Number,
+		default: 0
 	}
 
 });

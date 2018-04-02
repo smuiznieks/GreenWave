@@ -48,8 +48,7 @@ export const Navbar = (props) => {
                             <a className="nav-item nav-link" href="/locations">Locations</a>
                             <LogoutButton onClick={handleLogOut} />
                     </div>
-                    }
-                
+                }
             </div>
         </nav>
     );
