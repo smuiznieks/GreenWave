@@ -71,7 +71,7 @@ class LocationModal extends Component {
         const { status } = this.state;
         return (
            <div>
-                <button type="button" className="btn btn-primary" onClick={this.openModal}>
+                <button type="button" className="btn btn-primary" style={{ margin: 10 }}onClick={this.openModal}>
                     Create Location
                 </button>
                 {status && 

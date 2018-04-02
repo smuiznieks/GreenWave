@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
+import { List, ListItem, ListBtn } from "../../components/List";
 import { withUser } from '../../services/withUser';
 import EventModal from './EventModal';
 import LocationModal from "./LocationModal";
@@ -58,9 +58,9 @@ class Profile extends Component {
                             {this.state.myEvents.map(myevent=> (
                                 <ListItem key={myevent._id}>
                                     <h5>{myevent.title}</h5>
-                                    <p>{myevent.date} at {myevent.time}</p>
-                                    <p>RSVPs: {myevent.attendeeCount}</p>
-                                {/* <DeleteBtn /> */}
+                                    <p>When: {myevent.date} at {myevent.time}<br />Where: {myevent.location}<br />RSVPs: {myevent.attendeeCount}</p>
+                                    <ListBtn>Delete</ListBtn>
+                                    <ListBtn>Edit</ListBtn>
                                 </ListItem>
                             ))}
                             </List>
@@ -75,9 +75,9 @@ class Profile extends Component {
                             {this.state.myLocations.map(mylocation => (
                                 <ListItem key={mylocation._id}>
                                     <h5>{mylocation.title}</h5>
-                                    <p>{mylocation.address}</p>
-                                    <p>Score: {mylocation.score}</p>
-                                {/* <DeleteBtn /> */}
+                                    <p>Address: {mylocation.address}<br />Category: {mylocation.category}<br />Score: {mylocation.score}</p>
+                                    <ListBtn>Delete</ListBtn>
+                                    <ListBtn>Edit</ListBtn>
                                 </ListItem>
                             ))}
                             </List>

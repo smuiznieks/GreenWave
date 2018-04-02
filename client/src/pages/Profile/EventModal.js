@@ -70,7 +70,7 @@ class EventModal extends Component {
         const { eventStatus } = this.state;
         return (
             <div>
-                <button type="button" className="btn btn-primary" onClick={this.openModal}>
+                <button type="button" className="btn btn-primary" style={{ margin: 10 }} onClick={this.openModal}>
                     Create Event
                 </button>
                 {eventStatus && 
