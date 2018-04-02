@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Dropdown, Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, TextArea, FormBtn } from "../../components/Form";
 import { withUser } from '../../services/withUser';
 import Modal from 'react-modal';
 
@@ -44,7 +44,6 @@ class EventModal extends Component {
             eventTime: '',
             eventLocation: '',
             eventDescription: '',
-            eventStatus: null,
             modalIsOpen: false
         });
         API.createEvent({
@@ -68,7 +67,6 @@ class EventModal extends Component {
     };
 
     render() {
-        const { user } = this.props;
         const { eventStatus } = this.state;
         return (
             <div>
@@ -103,11 +101,11 @@ class EventModal extends Component {
                                 value={this.state.eventTitle}
                                 onChange={this.handleInputChange}
                                 name="title"
-                                placeholder="Beach Clean-Up"
+                                placeholder="Your Green Initiative"
                             />
                             <label htmlFor="eventDate">Date</label>
                             <Input
-                                value={this.state.date}
+                                value={this.state.eventDate}
                                 onChange={this.handleInputChange}
                                 name="date"
                                 type="date"
@@ -124,14 +122,14 @@ class EventModal extends Component {
                                 value={this.state.eventLocation}
                                 onChange={this.handleInputChange}
                                 name="location"
-                                placeholder="Edgewater Beach"
+                                placeholder="Your Neighborhood"
                             />
                             <label htmlFor="eventDescription">Description</label>
                             <TextArea
                                 value={this.state.eventDescription}
                                 onChange={this.handleInputChange}
                                 name="description"
-                                placeholder="(Optional)"
+                                placeholder="Optional: Add more details about your event"
                             />
                         </form>
                         </div>

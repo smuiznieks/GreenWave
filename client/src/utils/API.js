@@ -19,5 +19,15 @@ export default {
     // Create new event
     createEvent: function(eventData) {
         return axios.post('/api/events', eventData)
+    },
+
+    // Get events created by user
+    getMyEvents: function() {
+        return axios.get('/api/events')
+    },
+
+    // Get locations created by user
+    getMyLocations: function() {
+        return axios.get('/api/locations')
     }
 }
