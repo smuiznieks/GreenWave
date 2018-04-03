@@ -28,7 +28,7 @@ var LocationSchema = new Schema({
     },
     createdBy: {
         type: String,
-        // required: true
+        required: true
     }
 });
 
