@@ -1,0 +1,21 @@
+.mapWindow {
+    background-color: #fff; 
+    padding: 15px; 
+    width: 20em;
+    border-radius: 3px;
+    box-shadow: 0 0 15px #444;
+    font-family: 'Raleway', sans-serif;
+}
+
+.mapWindow h5 {
+    color: #44D2FF; 
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+}
+
+.mapBoldText {
+    color: #AFE5BE;
+    font-weight: 900;
+    text-transform: uppercase;
+}
