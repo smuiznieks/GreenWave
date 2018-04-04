@@ -10,7 +10,9 @@ class NotFound extends Component {
         return (
             <Container>
                 <Row>
-                    <h1>We're sorry, this page cannot be found.</h1>
+                    <Col size="lg-4 md-6 sm-12>">
+                        <h1>We're sorry, this page cannot be found.</h1>
+                    </Col>
                 </Row>
             </Container>
         );
