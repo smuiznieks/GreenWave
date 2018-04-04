@@ -38,5 +38,9 @@ export default {
     // Get locations created by user
     getMyLocations: function() {
         return axios.get('/api/locations')
-    }
+    },
+
+    getAllLocations: function() {
+        return axios.get("/api/locations");
+      },
 }
