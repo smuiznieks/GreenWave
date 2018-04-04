@@ -5,7 +5,8 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 import { InfoBox } from "react-google-maps/lib/components/addons/InfoBox";
 import API from "../../utils/API";
 import "./map.css";
-import ScoreBtn from './ScoreBtn';
+import { ScoreBtn } from "./ScoreBtn";
+
 
 export class Map extends Component {
 	state = { locations: [] }
@@ -79,10 +80,21 @@ export const StyledMapWithAnInfoBox = compose(
 						<p><span className="mapBoldText">Category:</span> {props.openLocation.category}</p>
 						<hr />
 						<p><span className="mapBoldText">Green Factor:</span> {props.openLocation.score}</p>
-						<ScoreBtn></ScoreBtn>
+						<ScoreBtn
+							className="btn btn-danger"
+							onClick={this.handleFormSubmit}
+						>
+							<i class="fas fa-minus"></i>
+						</ScoreBtn>
+						<ScoreBtn
+							className="btn btn-success"
+							onClick={this.handleFormSubmit}
+						>
+							<i class="fas fa-plus"></i>
+						</ScoreBtn>
 					</div>
 				</div>
 			</InfoBox>
-	}
+		}
 	</GoogleMap>
 );
