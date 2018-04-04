@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { Link } from 'react-router-dom';
@@ -8,8 +8,8 @@ import API from '../../utils/API';
 
 class LoginPage extends Component {
   state = {
-    username: null,
-    password: null
+    username: '',
+    password: ''
   }
 
   handleInputChange = (event) => {
@@ -48,7 +48,7 @@ class LoginPage extends Component {
     return (
       <Container>
         <Row>
-          {/* <Col xs={6} xsOffset={3}> */}
+          <Col size="lg-4 md-6 sm-12>">
             <form onSubmit={this.handleLogin}>
               <h1>Log In</h1>
               {error &&
@@ -56,14 +56,14 @@ class LoginPage extends Component {
                   {error}
                 </div>
               }
-              <label for="username">Username</label>
+              <label htmlFor="username">Username</label>
               <LoginInput
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 name="username"
                 placeholder="Username"
               />
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <LoginInput
                 value={this.state.password}
                 onChange={this.handleInputChange}
@@ -79,7 +79,7 @@ class LoginPage extends Component {
                 or <Link to='/create'>Create an Account</Link>
               </p>
             </form>
-          {/* </Col> */}
+          </Col>
         </Row>
       </Container>
     );
