@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { Link } from 'react-router-dom';
@@ -21,11 +20,8 @@ class LoginPage extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-
-    const { username, password } = this.state;
+    // const { username, password } = this.state;
     const { history } = this.props;
-    // console.log(this.state);
-
     // User authentication
     API.userLogin({
       username: this.state.username,
