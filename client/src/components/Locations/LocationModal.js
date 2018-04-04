@@ -5,26 +5,36 @@ import { withUser } from '../../services/withUser';
 import Modal from 'react-modal';
 
 class LocationModal extends Component {
-    state = {
-        locTitle: '',
-        locAddress: '',
-        locZipcode: '',
-        locCategory: '',
-        status: null,
-        modalIsOpen: false
-    };
+    constructor(props) {
+        super(props);
 
-    constructor() {
-        super();
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-    };
-
-    openModal() {
+        if(props.location) {
+            const { title, address, zipcode, category } = props.location;
+            this.state = {
+                title: title,
+                address: address,
+                zipcode: zipcode,
+                category: category,
+                status: null,
+                modalIsOpen: false
+            };
+        } else {
+            this.state = {
+                title: '',
+                address: '',
+                zipcode: '',
+                category: '',
+                status: null,
+                modalIsOpen: false
+            };
+        }
+    }
+    
+    openModal = () => {
         this.setState({modalIsOpen: true});
     };
      
-    closeModal() {
+    closeModal = () => {
         this.setState({modalIsOpen: false});
     };
 
@@ -36,7 +46,7 @@ class LocationModal extends Component {
     };
 
     handleDropdownChange = (event) => {
-        this.setState({locCategory: event.target.value});
+        this.setState({category: event.target.value});
     };
     
     handleCreateLocation = event => {
@@ -44,20 +54,34 @@ class LocationModal extends Component {
         this.setState({
             modalIsOpen: false
         });
-        API.createLocation({
-            title: this.state.locTitle,
-            address: this.state.locAddress,
-            zipcode: this.state.locZipcode,
-            category: this.state.locCategory,
-            createdBy: this.props.user.username
-        })
+
+        let promise;
+
+        const { title, address, zipcode, category } = this.state;
+        const locationData = {
+            title, address, zipcode, category
+        };
+
+        if (this.props.location) {
+            promise = API.updateLocation({
+                ...locationData,
+                _id: this.props.location._id
+            });
+        } else {
+            promise = API.createLocation({
+                ...locationData,
+                createdBy: this.props.user.username
+            });
+        }
+
+        promise
         .then(res => {
             this.setState({
                 locTitle: '',
                 locAddress: '',
                 locZipcode: '',
                 locCategory: '',
-                status: 'Thank you for adding to your community! Your location has been saved.'
+                status: 'Thank you for contributing to your community! Your location has been saved.'
             });  
         })
         .catch(err => {
@@ -69,10 +93,12 @@ class LocationModal extends Component {
 
     render() {
         const { status } = this.state;
+        const { location } = this.props;
+        const isEditing = !!location;
         return (
            <div>
                 <button type="button" className="btn btn-primary" style={{ margin: 10 }}onClick={this.openModal}>
-                    Create Location
+                    {isEditing ? "Edit" : "Create Location"}
                 </button>
                 {status && 
                     <div className="card">
@@ -90,37 +116,37 @@ class LocationModal extends Component {
                 >
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Grow Your Community<br/>Add a Location</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Grow Your Community</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
                         <form>
-                            <label htmlFor="locTitle">Location</label>
+                            <label htmlFor="title">Location</label>
                             <Input
-                                value={this.state.locTitle}
+                                value={this.state.title}
                                 onChange={this.handleInputChange}
-                                name="locTitle"
+                                name="title"
                                 placeholder="e.g. Office of Sustainability"
                             />
-                            <label htmlFor="locAddress">Address</label>
+                            <label htmlFor="address">Address</label>
                             <Input
-                                value={this.state.locAddress}
+                                value={this.state.address}
                                 onChange={this.handleInputChange}
-                                name="locAddress"
+                                name="address"
                                 placeholder="100 Green Avenue"
                             />
-                            <label htmlFor="locZipcode">Zipcode</label>
+                            <label htmlFor="zipcode">Zipcode</label>
                             <Input
-                                value={this.state.locZipcode}
+                                value={this.state.zipcode}
                                 onChange={this.handleInputChange}
-                                name="locZipcode"
+                                name="zipcode"
                                 placeholder="44113"
                             />
                             <div className="form-group">
                                 <label>Category</label>
-                                <select className="form-control" value={this.state.locCategory} onChange={this.handleDropdownChange}>
+                                <select className="form-control" value={this.state.category} onChange={this.handleDropdownChange}>
                                     <option disabled />
                                     <option value="Community">Green Community</option>
                                     <option value="Shop">Shop Green</option>
@@ -133,10 +159,10 @@ class LocationModal extends Component {
                         </div>
                         <div className="modal-footer">
                             <FormBtn
-                                disabled={!(this.state.locTitle && this.state.locAddress && this.state.locZipcode && this.state.locCategory)}
+                                disabled={!(this.state.title && this.state.address && this.state.zipcode && this.state.category)}
                                 onClick={this.handleCreateLocation}
                             >
-                                Submit Location
+                                {isEditing ? "Save Changed" : "Submit Location"}
                             </FormBtn>
                         </div>
                     </div>

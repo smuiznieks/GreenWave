@@ -1,12 +1,8 @@
 import React, {Component, Fragment} from 'react';
-
 import { withUser } from '../../services/withUser';
-import EventModal from './EventModal';
 import API from '../../utils/API';
-
+import EventModal from './EventModal';
 import { List, ListItem, ListBtn } from "../List";
-
-
 
 class EventList extends Component {
     state = {
@@ -46,13 +42,13 @@ class EventList extends Component {
         const { events } = this.state;
         return (
             <Fragment>
-                <h2>{ myEvents ? "Manage My GreenEvents" : "All Events"}</h2>
+                <h2>{ myEvents ? "Organize My Community" : "All Events"}</h2>
                 {events && events.length ? (
                     <List>
                     {this.renderEvents()}
                     </List>
                 ) : (
-                    <h5>No Results to Display</h5>
+                    <h5>No results to display. Add an event by clicking the <strong>Create Event</strong> button above.</h5>
                 )}
             </Fragment>
         );

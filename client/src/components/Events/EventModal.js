@@ -81,7 +81,7 @@ class EventModal extends Component {
                 time: '',
                 location: '',
                 description: '',
-                status: 'Thank you for adding to your community! Your event has been saved.'
+                status: 'Thank you for contributing to your community! Your event has been saved.'
             });  
         })
         .catch(err => {
@@ -116,7 +116,7 @@ class EventModal extends Component {
                 >
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Organize Your Community<br/>Add an Event</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Organize Your Community</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -162,7 +162,7 @@ class EventModal extends Component {
                         </div>
                         <div className="modal-footer">
                             <FormBtn
-                                // disabled={!(this.state.eventTitle && this.state.eventDate && this.state.eventTime && this.state.eventLocation)}
+                                disabled={!(this.state.title && this.state.date && this.state.time && this.state.location)}
                                 onClick={this.handleCreateEvent}
                             >
                                 {isEditing ? "Save Changes" : "Submit Event"}
