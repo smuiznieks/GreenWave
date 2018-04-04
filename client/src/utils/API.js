@@ -21,8 +21,17 @@ export default {
         return axios.post('/api/events', eventData)
     },
 
+    updateEvent: function(eventData) {
+        return axios.put(`/api/events/${eventData._id}`, eventData);
+    },
+
     // Get events created by user
     getMyEvents: function() {
+        return axios.get('/api/events')
+    },
+
+    // Get events created by user
+    getAllEvents: function() {
         return axios.get('/api/events')
     },
 

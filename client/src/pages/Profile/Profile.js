@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem, ListBtn } from "../../components/List";
 import { withUser } from '../../services/withUser';
-import EventModal from './EventModal';
+import {EventList, EventModal} from '../../components/Events';
 import LocationModal from "./LocationModal";
 
 class Profile extends Component {
@@ -52,21 +52,7 @@ class Profile extends Component {
                         <h2>My Upcoming Events</h2>
                     </Col>
                     <Col size="md-4">
-                        <h2>Manage My GreenEvents</h2>
-                        {this.state.myEvents.length ? (
-                            <List>
-                            {this.state.myEvents.map(myevent=> (
-                                <ListItem key={myevent._id}>
-                                    <h5>{myevent.title}</h5>
-                                    <p>When: {myevent.date} at {myevent.time}<br />Where: {myevent.location}<br />RSVPs: {myevent.attendeeCount}</p>
-                                    <ListBtn>Delete</ListBtn>
-                                    <ListBtn>Edit</ListBtn>
-                                </ListItem>
-                            ))}
-                            </List>
-                        ) : (
-                            <h5>No Results to Display</h5>
-                        )}
+                        <EventList myEvents />
                     </Col>
                     <Col size="md-4">
                         <h2>Manage My GreenSpots</h2>

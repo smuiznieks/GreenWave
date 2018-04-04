@@ -42,10 +42,6 @@ class LocationModal extends Component {
     handleCreateLocation = event => {
         event.preventDefault();
         this.setState({
-            locTitle: '',
-            locAddress: '',
-            locZipcode: '',
-            locCategory: '',
             modalIsOpen: false
         });
         API.createLocation({
@@ -57,6 +53,10 @@ class LocationModal extends Component {
         })
         .then(res => {
             this.setState({
+                locTitle: '',
+                locAddress: '',
+                locZipcode: '',
+                locCategory: '',
                 status: 'Thank you for adding to your community! Your location has been saved.'
             });  
         })

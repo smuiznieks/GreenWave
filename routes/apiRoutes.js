@@ -28,6 +28,15 @@ router.post('/events', eventsController.createEvent);
 // Get events created by current user
 router.get('/events', eventsController.getMyEvents);
 
+router.put('/events/:id', (req, res) => {
+   
+    // load event by req.params.id
+    // if (event.createdBy !== req.user.username) {
+    //     return res.status(403).json({message: 'Only event owners may modify their events.'});
+    // }
+    res.json({message: `Trying to update ${req.params.id}`});
+});
+
 // Get locations created by current user
 router.get('/locations', locationsController.getMyLocations);
 

@@ -6,6 +6,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import { withUser } from '../../services/withUser';
+import { EventList } from '../../components/Events';
 
 class Events extends Component {
   // Setting our component's initial state
@@ -141,27 +142,7 @@ class Events extends Component {
             </form>
           </Col>
           <Col size="md-6 sm-12">
-            {/* <Jumbotron> */}
-              <h1>Events On My List</h1>
-            {/* </Jumbotron> */}
-            {this.state.events.length ? (
-              <List>
-                {this.state.events.map(event => {
-                  return (
-                    <ListItem key={event._id}>
-                      <a href={"/events/" + event._id}>
-                        <strong>
-                          {event.title} by {event.author}
-                        </strong>
-                      </a>
-                      {/* <DeleteBtn onClick={() => this.deleteEvent(event._id)} /> */}
-                    </ListItem>
-                  );
-                })}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
+            <EventList />
           </Col>
         </Row>
       </Container>
