@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { withUser } from '../../services/withUser';
 import { EventList, EventModal} from '../../components/Events';
@@ -12,22 +12,22 @@ class Profile extends Component {
         myLocations: []
     };
     
-    componentDidMount() {
-        this.loadMyEvents();
-        this.loadMyLocations();
-    }
+    // componentDidMount() {
+    //     this.loadMyEvents();
+    //     this.loadMyLocations();
+    // }
 
-    loadMyEvents = () => {
-        API.getMyEvents()
-        .then(res => this.setState({ myEvents: res.data }))
-        .catch(err => console.log(err));
-    };
+    // loadMyEvents = () => {
+    //     API.getMyEvents()
+    //     .then(res => this.setState({ myEvents: res.data }))
+    //     .catch(err => console.log(err));
+    // };
 
-    loadMyLocations = () => {
-        API.getMyLocations()
-        .then(res => this.setState({ myLocations: res.data }))
-        .catch(err => console.log(err));
-    };
+    // loadMyLocations = () => {
+    //     API.getMyLocations()
+    //     .then(res => this.setState({ myLocations: res.data }))
+    //     .catch(err => console.log(err));
+    // };
 
     render() {
         const { user } = this.props;
@@ -47,13 +47,15 @@ class Profile extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col size="md-4">
+                    <Col size="sm-12">
                         <h2>My Upcoming Events</h2>
                     </Col>
-                    <Col size="md-4">
+                </Row>
+                <Row>
+                    <Col size="md-6 sm-12">
                         <EventList myEvents />
                     </Col>
-                    <Col size="md-4">
+                    <Col size="md-6 sm-12">
                         <LocationList myLocations />
                     </Col>
                 </Row>

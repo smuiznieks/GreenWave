@@ -10,7 +10,7 @@ class EventList extends Component {
     };
 
     loadEvents() {
-        const promise = this.props.myEvents ? API.getMyEvents() : API.getAllEvents();
+        const promise = this.props.myEvents ? API.getMyEvents(this.props.user.username) : API.getAllEvents();
         promise
         .then(res => this.setState({ events: res.data }))
         .catch(err => console.log(err));

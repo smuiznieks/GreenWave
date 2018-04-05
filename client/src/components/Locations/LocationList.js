@@ -9,19 +9,19 @@ class LocationList extends Component {
         locations: null
     };
 
-    loadEvents() {
-        API.getMyLocations()
+    loadLocations() {
+        API.getMyLocations(this.props.user.username)
         .then(res => this.setState({ locations: res.data }))
         .catch(err => console.log(err));
     }
 
     componentDidMount() {
-        this.loadEvents();
+        this.loadLocations();
     }
 
     deleteLocation = (id) => {
         API.deleteLocation(id)
-        .then(res => this.loadEvents())
+        .then(res => this.loadLocations())
         .catch(err => console.log(err));
     }
 

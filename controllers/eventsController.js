@@ -12,7 +12,7 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
   getMyEvents: function(req, res) {
-    db.Event.find().sort({ date: 1 })
+    db.Event.find({ createdBy: req.params.username }).sort({ date: 1 })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },

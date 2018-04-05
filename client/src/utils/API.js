@@ -22,8 +22,8 @@ export default {
     },
 
     // Get events created by user
-    getMyEvents: function() {
-        return axios.get('/api/events')
+    getMyEvents: function(username) {
+        return axios.get(`/api/events/${username}`);
     },
 
     // Get all events
@@ -47,8 +47,8 @@ export default {
     },
 
     // Get locations created by user
-    getMyLocations: function() {
-        return axios.get('/api/locations');
+    getMyLocations: function(username) {
+        return axios.get(`/api/locations/${username}`);
     },
 
     // Get all locations
