@@ -48,7 +48,7 @@ class EventModal extends Component {
         });
     };
     
-    handleCreateEvent = event => {
+    handleCreateEvent = (event) => {
         event.preventDefault();
         this.setState({
             modalIsOpen: false
@@ -56,9 +56,9 @@ class EventModal extends Component {
 
         let promise;
 
-        const { title, time, data, location, description } = this.state;
+        const { title, time, date, location, description } = this.state;
         const eventData = {
-            title, time, data, location, description
+            title, time, date, location, description
         };
 
         if (this.props.event) {
@@ -81,7 +81,7 @@ class EventModal extends Component {
                 time: '',
                 location: '',
                 description: '',
-                status: 'Thank you for adding to your community! Your event has been saved.'
+                status: 'Thank you for contributing to your community! Your event has been saved.'
             });  
         })
         .catch(err => {
@@ -97,7 +97,7 @@ class EventModal extends Component {
         const isEditing = !!event;
         return (
             <div>
-                <button type="button" className="btn btn-primary" style={{ margin: 10 }} onClick={this.openModal}>
+                <button type="button" className="btn btn-primary" onClick={this.openModal}>
                     {isEditing ? "Edit" : "Create Event"}
                 </button>
                 {status && 
@@ -116,7 +116,7 @@ class EventModal extends Component {
                 >
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Organize Your Community<br/>Add an Event</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Organize Your Community</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -156,13 +156,13 @@ class EventModal extends Component {
                                 value={this.state.description}
                                 onChange={this.handleInputChange}
                                 name="description"
-                                placeholder="Optional: Add more details about your event"
+                                placeholder="Optional: Details about your event"
                             />
                         </form>
                         </div>
                         <div className="modal-footer">
                             <FormBtn
-                                // disabled={!(this.state.eventTitle && this.state.eventDate && this.state.eventTime && this.state.eventLocation)}
+                                disabled={!(this.state.title && this.state.date && this.state.time && this.state.location)}
                                 onClick={this.handleCreateEvent}
                             >
                                 {isEditing ? "Save Changes" : "Submit Event"}

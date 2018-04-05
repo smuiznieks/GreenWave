@@ -1,12 +1,8 @@
 import React, {Component, Fragment} from 'react';
-
 import { withUser } from '../../services/withUser';
-import EventModal from './EventModal';
 import API from '../../utils/API';
-
+import EventModal from './EventModal';
 import { List, ListItem, ListBtn } from "../List";
-
-
 
 class EventList extends Component {
     state = {
@@ -24,17 +20,24 @@ class EventList extends Component {
         this.loadEvents();
     }
 
+    deleteEvent = (id) => {
+        API.deleteEvent(id)
+        .then(res => this.loadEvents)
+        .catch(err => console.log(err));
+    }
+
     renderEvents() {
         const {username} = this.props.user;
         return (
             this.state.events.map(event => {
-                const isOwned = event.createdBy === username;
+                const Owner = event.createdBy === username;
                 return (
                     <ListItem key={event._id}>
                         <h5>{event.title}</h5>
                         <p>When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendeeCount}</p>
-                        {isOwned || <ListBtn>Delete</ListBtn>}
-                        {isOwned || <EventModal event={event} />}
+                        {Owner && <EventModal event={event} />}
+                        {Owner && <ListBtn onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
+                        {!Owner && <ListBtn>RSVP</ListBtn>}
                     </ListItem>
                 )
             })
@@ -46,13 +49,13 @@ class EventList extends Component {
         const { events } = this.state;
         return (
             <Fragment>
-                <h2>{ myEvents ? "Manage My GreenEvents" : "All Events"}</h2>
+                <h2>{ myEvents ? "Organize My Community" : "Browse Green Events"}</h2>
                 {events && events.length ? (
                     <List>
                     {this.renderEvents()}
                     </List>
                 ) : (
-                    <h5>No Results to Display</h5>
+                    <h5>No results to display. Add an event by clicking the <strong>Create Event</strong> button above.</h5>
                 )}
             </Fragment>
         );
