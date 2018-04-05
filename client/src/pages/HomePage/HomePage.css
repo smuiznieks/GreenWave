@@ -1,12 +1,17 @@
 .Container {
-	background-color: green;  	
+	 	
+}
+.main-container h2 {
+    color: white;
+    text-align: center;
 }
 
 .Heading {
-	text-align: center;	 
+	text-align: center;
+    color: green;	 
 }
 
 .footer {
 	 background-color: #013220;
+	 color: green;
 }
- 

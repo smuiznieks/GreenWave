@@ -1,118 +1,92 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
-// import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Dropdown, Input, TextArea, FormBtn } from "../../components/Form";
+import { List, ListItem, ListBtn } from "../../components/List";
 import { withUser } from '../../services/withUser';
+import EventModal from './EventModal';
+import LocationModal from "./LocationModal";
 
 class Profile extends Component {
     state = {
-        locTitle: '',
-        locAddress: '',
-        locZipcode: '',
-        locCategory: '',
-        status: null
-    };
-
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
-    };
-
-    handleDropdownChange = (event) => {
-        this.setState({locCategory: event.target.value});
+        upcomingEvents: [],
+        myEvents: [],
+        myLocations: []
     };
     
-    handleSaveLocation = event => {
-        event.preventDefault();
-        API.saveLocation({
-            title: this.state.locTitle,
-            address: this.state.locAddress,
-            zipcode: this.state.locZipcode,
-            category: this.state.locCategory,
-            // createdBy: this.user.username
-        })
-        .then(res => {
-            this.setState({
-                status: 'Success!'
-            })
-        })
-        .catch(err => {
-            this.setState({
-                status: err.message
-            })
-        });
+    componentDidMount() {
+        this.loadMyEvents();
+        this.loadMyLocations();
+    }
+
+    loadMyEvents = () => {
+        API.getMyEvents()
+        .then(res => this.setState({ myEvents: res.data }))
+        .catch(err => console.log(err));
+    };
+
+    loadMyLocations = () => {
+        API.getMyLocations()
+        .then(res => this.setState({ myLocations: res.data }))
+        .catch(err => console.log(err));
     };
 
     render() {
         const { user } = this.props;
-        const { status } = this.state;
         return (
-            <Container fluid>
+            <Container>
                 <Row>
                 {user &&
-                    <h1>Hi there, {user.username}!</h1>
+                    <h1>Let's save Mother Earth together, {user.username}!</h1>
                 }
                 </Row>
                 <Row>
-                    <Col size="md-6">
-                        {/* <Jumbotron> */}
-                            <h1>What green location do you want to enter?</h1>
-                        {/* </Jumbotron> */}
-                        <form>
-                            {status && 
-                                <div>
-                                    {status}
-                                </div>
-                            }
-                            <label for="locTitle">Location</label>
-                            <Input
-                                value={this.state.locTitle}
-                                onChange={this.handleInputChange}
-                                name="locTitle"
-                                placeholder="Office of Sustainability"
-                            />
-                            <label for="locAddress">Address</label>
-                            <Input
-                                value={this.state.locAddress}
-                                onChange={this.handleInputChange}
-                                name="locAddress"
-                                placeholder="230 West Huron Road"
-                            />
-                            <label for="locZipcode">Zipcode</label>
-                            <Input
-                                value={this.state.locZipcode}
-                                onChange={this.handleInputChange}
-                                name="locZipcode"
-                                placeholder="44113"
-                            />
-                            {/* <Dropdown 
-                                value={this.state.locCategory} 
-                                onChange={this.handleDropdownChange}
-                            /> */}
-                            <div className="form-group">
-                                <label>Category</label>
-                                <select className="form-control" value={this.state.locCategory} onChange={this.handleDropdownChange}>
-                                    <option value="Community">Green Community</option>
-                                    <option value="Shop">Shop Green</option>
-                                    <option value="Travel">Travel Green</option>
-                                    <option value="Volunteer">Volunteer</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                            <FormBtn
-                                // disabled={!(this.state.time && this.state.title)}
-                                onClick={this.handleSaveLocation}
-                            >
-                                Submit Location
-                            </FormBtn>
-                        </form>
+                    <Col size="md-4">
+                        <EventModal />
+                    </Col>
+                    <Col size="md-4">
+                        <LocationModal />
                     </Col>
                 </Row>
+                <Row>
+                    <Col size="md-4">
+                        <h2>My Upcoming Events</h2>
+                    </Col>
+                    <Col size="md-4">
+                        <h2>Manage My GreenEvents</h2>
+                        {this.state.myEvents.length ? (
+                            <List>
+                            {this.state.myEvents.map(myevent=> (
+                                <ListItem key={myevent._id}>
+                                    <h5>{myevent.title}</h5>
+                                    <p>When: {myevent.date} at {myevent.time}<br />Where: {myevent.location}<br />RSVPs: {myevent.attendeeCount}</p>
+                                    <ListBtn>Delete</ListBtn>
+                                    <ListBtn>Edit</ListBtn>
+                                </ListItem>
+                            ))}
+                            </List>
+                        ) : (
+                            <h5>No Results to Display</h5>
+                        )}
+                    </Col>
+                    <Col size="md-4">
+                        <h2>Manage My GreenSpots</h2>
+                        {this.state.myLocations.length ? (
+                            <List>
+                            {this.state.myLocations.map(mylocation => (
+                                <ListItem key={mylocation._id}>
+                                    <h5>{mylocation.title}</h5>
+                                    <p>Address: {mylocation.address}<br />Category: {mylocation.category}<br />Score: {mylocation.score}</p>
+                                    <ListBtn>Delete</ListBtn>
+                                    <ListBtn>Edit</ListBtn>
+                                </ListItem>
+                            ))}
+                            </List>
+                        ) : (
+                            <h5>No Results to Display</h5>
+                        )}
+                    </Col>
+                </Row>
+                
             </Container>
         );
     }

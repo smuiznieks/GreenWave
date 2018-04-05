@@ -9,16 +9,19 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
-    db.Event
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  getMyEvents: function(req, res) {
+    db.Event.find().sort({ date: 1 })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   },
   createEvent: function(req, res) {
     db.Event.create(req.body)
-    .then(location => console.log('Success!'))
-    .catch(err => console.log(err));
+    .then(event => {
+      res.send(event);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    })
   },
   update: function(req, res) {
     db.Event

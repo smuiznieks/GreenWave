@@ -12,12 +12,22 @@ export default {
     },
 
     // Create new location
-    saveLocation: function(locData) {
+    createLocation: function(locData) {
         return axios.post('/api/locations', locData)
     },
 
     // Create new event
-    saveEvent: function(eventData) {
+    createEvent: function(eventData) {
         return axios.post('/api/events', eventData)
+    },
+
+    // Get events created by user
+    getMyEvents: function() {
+        return axios.get('/api/events')
+    },
+
+    // Get locations created by user
+    getMyLocations: function() {
+        return axios.get('/api/locations')
     }
-};
+}

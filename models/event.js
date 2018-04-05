@@ -10,25 +10,32 @@ const EventSchema= new Schema({
 	},
 
 	time:{
-		type: Number,
+		type: String,
 		required: true
 	},
 	
-
 	date:{
-		type: Number,
-		// required: true
+		type: String,
+		required: true
 	},
-
 
 	location:{
 		type: String,
 		required: true
 	},
 
-
 	description:{
 		type: String
+	},
+
+	createdBy:{
+		type: String,
+		required: true
+	},
+
+	attendeeCount:{
+		type: Number,
+		default: 0
 	}
 
 });
