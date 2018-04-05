@@ -78,7 +78,7 @@ class HomePage extends Component {
 
         
         <div className="footer">
-        <h2>Copyright 2018 Selga Muiznieks, Ashlee Brolly, Mike Kapronika, Jon Mockbee, and Paul Schaller</h2>
+        <h2>Copyright 2018 Selga Muiznieks, Ashlee Brolly, Mike Kapronica, Jon Mockbee, and Paul Schaller</h2>
         </div>
 
         </div>
