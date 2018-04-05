@@ -49,7 +49,7 @@ class LocationModal extends Component {
         this.setState({category: event.target.value});
     };
     
-    handleCreateLocation = event => {
+    handleCreateLocation = (event) => {
         event.preventDefault();
         this.setState({
             modalIsOpen: false
@@ -97,7 +97,7 @@ class LocationModal extends Component {
         const isEditing = !!location;
         return (
            <div>
-                <button type="button" className="btn btn-primary" style={{ margin: 10 }}onClick={this.openModal}>
+                <button type="button" className="btn btn-primary" onClick={this.openModal}>
                     {isEditing ? "Edit" : "Create Location"}
                 </button>
                 {status && 
@@ -128,7 +128,7 @@ class LocationModal extends Component {
                                 value={this.state.title}
                                 onChange={this.handleInputChange}
                                 name="title"
-                                placeholder="e.g. Office of Sustainability"
+                                placeholder="Your Green Location"
                             />
                             <label htmlFor="address">Address</label>
                             <Input
@@ -162,7 +162,7 @@ class LocationModal extends Component {
                                 disabled={!(this.state.title && this.state.address && this.state.zipcode && this.state.category)}
                                 onClick={this.handleCreateLocation}
                             >
-                                {isEditing ? "Save Changed" : "Submit Location"}
+                                {isEditing ? "Save Changes" : "Submit Location"}
                             </FormBtn>
                         </div>
                     </div>

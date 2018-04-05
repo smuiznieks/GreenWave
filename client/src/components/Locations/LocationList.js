@@ -19,16 +19,23 @@ class LocationList extends Component {
         this.loadEvents();
     }
 
+    deleteLocation = (id) => {
+        API.deleteLocation(id)
+        .then(res => this.loadEvents())
+        .catch(err => console.log(err));
+    }
+
     renderLocations() {
         const { username } = this.props.user;
         return (
             this.state.locations.map(location => {
+                const Owner = location.createdBy === username;
                 return (
                     <ListItem key={location._id}>
                         <h5>{location.title}</h5>
                         <p>Address: {location.address}<br />Category: {location.category}<br />Score: {location.score}</p>
-                        <ListBtn>Delete</ListBtn>
-                        <LocationModal location={location} />
+                        {Owner && <LocationModal location={location} />}
+                        {Owner && <ListBtn onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
                     </ListItem>
                 )
             })
@@ -40,7 +47,7 @@ class LocationList extends Component {
         const { locations } = this.state;
         return (
             <Fragment>
-                <h2>Build My Community</h2>
+                <h2>Grow My Community</h2>
                 {locations && locations.length ? (
                     <List>
                         {this.renderLocations()}

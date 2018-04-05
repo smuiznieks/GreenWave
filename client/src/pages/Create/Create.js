@@ -12,7 +12,6 @@ class Create extends Component {
         error: ''
     }
 
-
     handleInputChange = (event) => {
         const { name, value } = event.target;
         this.setState({
@@ -25,7 +24,6 @@ class Create extends Component {
         const { email, username, password, confirmPassword } = this.state;
         const { history } = this.props;
 
-        
         // Clear previous errors
         this.setState({
             error: null
@@ -38,7 +36,6 @@ class Create extends Component {
             });
             return;
         }
-
 
         // Check that passwords match
         if (password !== confirmPassword) {

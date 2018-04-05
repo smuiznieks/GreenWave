@@ -19,26 +19,32 @@ router.post('/auth',passport.authenticate('local'), userController.userLogin);
 // User logout
 router.delete('/auth', userController.userLogout);
 
-// Create new location
-router.post('/locations', locationsController.createLocation);
-
 // Create new event
 router.post('/events', eventsController.createEvent);
+
+// Get all events
+router.get('/events', eventsController.findAll);
 
 // Get events created by current user
 router.get('/events', eventsController.getMyEvents);
 
-router.put('/events/:id', (req, res) => {
-   
-    // load event by req.params.id
-    // if (event.createdBy !== req.user.username) {
-    //     return res.status(403).json({message: 'Only event owners may modify their events.'});
-    // }
-    res.json({message: `Trying to update ${req.params.id}`});
-});
+// Edit an existing event
+router.put('/events/:id', eventsController.updateEvent);
+
+// Delete an event
+router.delete('/events/:id', eventsController.remove);
+
+// Create new location
+router.post('/locations', locationsController.createLocation);
 
 // Get locations created by current user
 router.get('/locations', locationsController.getMyLocations);
+
+// Edit an existing location
+router.put('/locations/:id', locationsController.updateLocation);
+
+// Delete a location
+router.delete('/locations/:id', locationsController.remove);
 
 module.exports = router;
 
