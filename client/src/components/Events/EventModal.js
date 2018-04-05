@@ -5,27 +5,39 @@ import { withUser } from '../../services/withUser';
 import Modal from 'react-modal';
 
 class EventModal extends Component {
-    state = {
-        eventTitle: '',
-        eventDate: '',
-        eventTime: '',
-        eventLocation: '',
-        eventDescription: '',
-        eventStatus: null,
-        modalIsOpen: false
-    };
+    constructor(props) {
+        super(props);
+        
+        if(props.event) {
+            const { title, date, time, location, description } = props.event;
 
-    constructor() {
-        super();
-        this.openModal = this.openModal.bind(this);
-        this.closeModal = this.closeModal.bind(this);
-    };
+            this.state = {
+                title: title,
+                date: date, 
+                time: time,
+                location: location,
+                description: description,
+                status: null,
+                modalIsOpen: false,
+            };
+        } else {
+            this.state = {
+                title: '',
+                date: '',
+                time: '',
+                location: '',
+                description: '',
+                status: null,
+                modalIsOpen: false
+            };
+        }
+    }
 
-    openModal() {
+    openModal = () => {
         this.setState({modalIsOpen: true});
     };
      
-    closeModal() {
+    closeModal = () => {
         this.setState({modalIsOpen: false});
     };
 
@@ -36,47 +48,62 @@ class EventModal extends Component {
         });
     };
     
-    handleCreateEvent = event => {
+    handleCreateEvent = (event) => {
         event.preventDefault();
         this.setState({
-            eventTitle: '',
-            eventDate: '',
-            eventTime: '',
-            eventLocation: '',
-            eventDescription: '',
             modalIsOpen: false
         });
-        API.createEvent({
-            title: this.state.eventTitle,
-            time: this.state.eventTime,
-            date: this.state.eventDate,
-            location: this.state.eventLocation,
-            description: this.state.eventDescription,
-            createdBy: this.props.user.username
-        })
+
+        let promise;
+
+        const { title, time, date, location, description } = this.state;
+        const eventData = {
+            title, time, date, location, description
+        };
+
+        if (this.props.event) {
+            promise = API.updateEvent({
+                ...eventData,
+                _id: this.props.event._id
+            });
+        } else {
+            promise = API.createEvent({
+                ...eventData,
+                createdBy: this.props.user.username
+            });
+        }
+
+        promise
         .then(res => {
             this.setState({
-                eventStatus: 'Thank you for adding to your community! Your event has been saved.'
+                title: '',
+                date: '',
+                time: '',
+                location: '',
+                description: '',
+                status: 'Thank you for contributing to your community! Your event has been saved.'
             });  
         })
         .catch(err => {
             this.setState({
-                eventStatus: err.message
+                status: err.message
             })
         });
     };
 
     render() {
-        const { eventStatus } = this.state;
+        const { status } = this.state;
+        const { event } = this.props;
+        const isEditing = !!event;
         return (
             <div>
-                <button type="button" className="btn btn-primary" style={{ margin: 10 }} onClick={this.openModal}>
-                    Create Event
+                <button type="button" className="btn btn-primary" onClick={this.openModal}>
+                    {isEditing ? "Edit" : "Create Event"}
                 </button>
-                {eventStatus && 
+                {status && 
                     <div className="card">
                         <div className="card-body">
-                            {eventStatus}
+                            {status}
                         </div>
                     </div>
                 }
@@ -89,56 +116,56 @@ class EventModal extends Component {
                 >
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Organize Your Community<br/>Add an Event</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Organize Your Community</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div className="modal-body">
                         <form>
-                            <label htmlFor="eventTitle">Event</label>
+                            <label htmlFor="title">Event</label>
                             <Input
-                                value={this.state.eventTitle}
+                                value={this.state.title}
                                 onChange={this.handleInputChange}
                                 name="title"
                                 placeholder="Your Green Initiative"
                             />
-                            <label htmlFor="eventDate">Date</label>
+                            <label htmlFor="date">Date</label>
                             <Input
-                                value={this.state.eventDate}
+                                value={this.state.date}
                                 onChange={this.handleInputChange}
                                 name="date"
                                 type="date"
                             />
-                            <label htmlFor="eventTime">Time</label>
+                            <label htmlFor="time">Time</label>
                             <Input
-                                value={this.state.eventTime}
+                                value={this.state.time}
                                 onChange={this.handleInputChange}
                                 name="time"
                                 type="time"
                             />
-                            <label htmlFor="eventLocation">Location</label>
+                            <label htmlFor="location">Location</label>
                             <Input
-                                value={this.state.eventLocation}
+                                value={this.state.location}
                                 onChange={this.handleInputChange}
                                 name="location"
                                 placeholder="Your Neighborhood"
                             />
-                            <label htmlFor="eventDescription">Description</label>
+                            <label htmlFor="description">Description</label>
                             <TextArea
-                                value={this.state.eventDescription}
+                                value={this.state.description}
                                 onChange={this.handleInputChange}
                                 name="description"
-                                placeholder="Optional: Add more details about your event"
+                                placeholder="Optional: Details about your event"
                             />
                         </form>
                         </div>
                         <div className="modal-footer">
                             <FormBtn
-                                // disabled={!(this.state.eventTitle && this.state.eventDate && this.state.eventTime && this.state.eventLocation)}
+                                disabled={!(this.state.title && this.state.date && this.state.time && this.state.location)}
                                 onClick={this.handleCreateEvent}
                             >
-                                Submit Event
+                                {isEditing ? "Save Changes" : "Submit Event"}
                             </FormBtn>
                         </div>
                     </div>

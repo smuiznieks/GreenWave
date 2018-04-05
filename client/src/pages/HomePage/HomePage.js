@@ -86,5 +86,4 @@ class HomePage extends Component {
   };
 }
 
-
 export default withUser(HomePage);

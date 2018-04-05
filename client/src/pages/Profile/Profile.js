@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem, ListBtn } from "../../components/List";
 import { withUser } from '../../services/withUser';
-import EventModal from './EventModal';
-import LocationModal from "./LocationModal";
+import { EventList, EventModal} from '../../components/Events';
+import { LocationList, LocationModal} from "../../components/Locations";
 
 class Profile extends Component {
     state = {
@@ -52,41 +51,12 @@ class Profile extends Component {
                         <h2>My Upcoming Events</h2>
                     </Col>
                     <Col size="md-4">
-                        <h2>Manage My GreenEvents</h2>
-                        {this.state.myEvents.length ? (
-                            <List>
-                            {this.state.myEvents.map(myevent=> (
-                                <ListItem key={myevent._id}>
-                                    <h5>{myevent.title}</h5>
-                                    <p>When: {myevent.date} at {myevent.time}<br />Where: {myevent.location}<br />RSVPs: {myevent.attendeeCount}</p>
-                                    <ListBtn>Delete</ListBtn>
-                                    <ListBtn>Edit</ListBtn>
-                                </ListItem>
-                            ))}
-                            </List>
-                        ) : (
-                            <h5>No Results to Display</h5>
-                        )}
+                        <EventList myEvents />
                     </Col>
                     <Col size="md-4">
-                        <h2>Manage My GreenSpots</h2>
-                        {this.state.myLocations.length ? (
-                            <List>
-                            {this.state.myLocations.map(mylocation => (
-                                <ListItem key={mylocation._id}>
-                                    <h5>{mylocation.title}</h5>
-                                    <p>Address: {mylocation.address}<br />Category: {mylocation.category}<br />Score: {mylocation.score}</p>
-                                    <ListBtn>Delete</ListBtn>
-                                    <ListBtn>Edit</ListBtn>
-                                </ListItem>
-                            ))}
-                            </List>
-                        ) : (
-                            <h5>No Results to Display</h5>
-                        )}
+                        <LocationList myLocations />
                     </Col>
                 </Row>
-                
             </Container>
         );
     }
