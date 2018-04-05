@@ -11,16 +11,12 @@ export default {
         return axios.post('/api/auth', loginData)
     },
 
-    // Create new location
-    createLocation: function(locData) {
-        return axios.post('/api/locations', locData)
-    },
-
     // Create new event
     createEvent: function(eventData) {
         return axios.post('/api/events', eventData)
     },
 
+    // Edit an existing event
     updateEvent: function(eventData) {
         return axios.put(`/api/events/${eventData._id}`, eventData);
     },
@@ -30,17 +26,37 @@ export default {
         return axios.get('/api/events')
     },
 
-    // Get events created by user
+    // Get all events
     getAllEvents: function() {
         return axios.get('/api/events')
     },
 
-    // Get locations created by user
-    getMyLocations: function() {
-        return axios.get('/api/locations')
+    // Delete an event
+    deleteEvent: function(id) {
+        return axios.delete('/api/events/' + id);
     },
 
+    // Create new location
+    createLocation: function(locData) {
+        return axios.post('/api/locations', locData)
+    },
+
+    // Edit an existing location
+    updateLocation: function(locationData) {
+        return axios.put(`/api/locations/${locationData._id}`, locationData);
+    },
+
+    // Get locations created by user
+    getMyLocations: function() {
+        return axios.get('/api/locations');
+    },
+
+    // Get all locations
     getAllLocations: function() {
-        return axios.get("/api/locations");
-      },
+        return axios.get('/api/locations');
+    },
+
+    deleteLocation: function(id) {
+        return axios.delete('/api/locations/' + id);
+    }
 }

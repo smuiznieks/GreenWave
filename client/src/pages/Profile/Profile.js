@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem, ListBtn } from "../../components/List";
 import { withUser } from '../../services/withUser';
 import { EventList, EventModal} from '../../components/Events';
 import { LocationList, LocationModal} from "../../components/Locations";

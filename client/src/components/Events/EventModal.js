@@ -48,7 +48,7 @@ class EventModal extends Component {
         });
     };
     
-    handleCreateEvent = event => {
+    handleCreateEvent = (event) => {
         event.preventDefault();
         this.setState({
             modalIsOpen: false
@@ -56,9 +56,9 @@ class EventModal extends Component {
 
         let promise;
 
-        const { title, time, data, location, description } = this.state;
+        const { title, time, date, location, description } = this.state;
         const eventData = {
-            title, time, data, location, description
+            title, time, date, location, description
         };
 
         if (this.props.event) {
@@ -97,7 +97,7 @@ class EventModal extends Component {
         const isEditing = !!event;
         return (
             <div>
-                <button type="button" className="btn btn-primary" style={{ margin: 10 }} onClick={this.openModal}>
+                <button type="button" className="btn btn-primary" onClick={this.openModal}>
                     {isEditing ? "Edit" : "Create Event"}
                 </button>
                 {status && 
@@ -156,7 +156,7 @@ class EventModal extends Component {
                                 value={this.state.description}
                                 onChange={this.handleInputChange}
                                 name="description"
-                                placeholder="Optional: Add more details about your event"
+                                placeholder="Optional: Details about your event"
                             />
                         </form>
                         </div>
