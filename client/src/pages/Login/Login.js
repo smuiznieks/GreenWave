@@ -44,7 +44,7 @@ class LoginPage extends Component {
     return (
       <Container>
         <Row>
-          <Col size="lg-4 md-6 sm-12>">
+          <Col size="lg-4 md-6 sm-12">
             <form onSubmit={this.handleLogin}>
               <h1>Log In</h1>
               {error &&
@@ -75,6 +75,29 @@ class LoginPage extends Component {
                 or <Link to='/create'>Create an Account</Link>
               </p>
             </form>
+          </Col>
+          <Col size="lg-4 md-6 sm-12">
+          <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img className="d-block w-100" src={require("./Recycling(2).jpg")} alt="First slide"/>
+    </div>
+    <div className="carousel-item">
+      <img className="d-block w-100" src={require("./Recycling(CardboardBale).jpg")} alt="Second slide"/>
+    </div>
+    <div className="carousel-item">
+      <img className="d-block w-100" src={require("./recycling-3.jpg")} alt="Third slide"/>
+    </div>
+  </div>
+  <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="sr-only">Previous</span>
+  </a>
+  <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="sr-only">Next</span>
+  </a>
+</div>
           </Col>
         </Row>
       </Container>
