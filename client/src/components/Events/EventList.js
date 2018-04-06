@@ -22,7 +22,7 @@ class EventList extends Component {
 
     deleteEvent = (id) => {
         API.deleteEvent(id)
-        .then(res => this.loadEvents)
+        .then(res => this.loadEvents())
         .catch(err => console.log(err));
     }
 
