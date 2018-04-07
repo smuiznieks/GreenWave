@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import API from "../../utils/API";
+import React, { Component, Fragment } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { withUser } from '../../services/withUser';
 import { EventList, EventModal} from '../../components/Events';
@@ -11,49 +10,47 @@ class Profile extends Component {
         myEvents: [],
         myLocations: []
     };
-    
-    componentDidMount() {
-        this.loadMyEvents();
-        this.loadMyLocations();
-    }
 
-    loadMyEvents = () => {
-        API.getMyEvents()
-        .then(res => this.setState({ myEvents: res.data }))
-        .catch(err => console.log(err));
-    };
-
-    loadMyLocations = () => {
-        API.getMyLocations()
-        .then(res => this.setState({ myLocations: res.data }))
-        .catch(err => console.log(err));
-    };
+    // onSubmit(eventData) {
+    //     if (this.props.event) {
+    //         promise = API.updateEvent({
+    //             ...eventData,
+    //             _id: this.props.event._id
+    //         });
+    //     } else {
+    //         promise = API.createEvent({
+    //             ...eventData,
+    //             createdBy: this.props.user.username
+    //         });
+    //     }
+    // } 
 
     render() {
         const { user } = this.props;
         return (
             <Container>
                 <Row>
-                {user &&
-                    <h1>Let's save Mother Earth together, {user.username}!</h1>
-                }
+                    <Col size="sm-12">
+                        <h1 className="text-center" style={{margin: 40}}>Let's save Mother Earth together, {user.username}!</h1>
+                    </Col>
                 </Row>
                 <Row>
-                    <Col size="md-4">
-                        <EventModal />
-                    </Col>
-                    <Col size="md-4">
+                    <Col size="sm-12">
+                        <EventModal /> 
                         <LocationModal />
                     </Col>
                 </Row>
+                <hr />
                 <Row>
-                    <Col size="md-4">
+                    <Col size="sm-12">
                         <h2>My Upcoming Events</h2>
                     </Col>
-                    <Col size="md-4">
+                </Row>
+                <Row>
+                    <Col size="md-6 sm-12">
                         <EventList myEvents />
                     </Col>
-                    <Col size="md-4">
+                    <Col size="md-6 sm-12">
                         <LocationList myLocations />
                     </Col>
                 </Row>

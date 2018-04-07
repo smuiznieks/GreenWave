@@ -26,10 +26,13 @@ router.post('/events', eventsController.createEvent);
 router.get('/events', eventsController.findAll);
 
 // Get events created by current user
-router.get('/events', eventsController.getMyEvents);
+router.get('/events/:username', eventsController.getMyEvents);
 
 // Edit an existing event
 router.put('/events/:id', eventsController.updateEvent);
+
+// Update attendees
+router.put('/events/:id', eventsController.updateAttendees);
 
 // Delete an event
 router.delete('/events/:id', eventsController.remove);
@@ -37,8 +40,11 @@ router.delete('/events/:id', eventsController.remove);
 // Create new location
 router.post('/locations', locationsController.createLocation);
 
+//Get all locations
+router.get('/locations', locationsController.getAllLocations);
+
 // Get locations created by current user
-router.get('/locations', locationsController.getMyLocations);
+router.get('/locations/:username', locationsController.getMyLocations);
 
 // Edit an existing location
 router.put('/locations/:id', locationsController.updateLocation);
