@@ -47,8 +47,7 @@ class HomePage extends Component {
         <div className="Heading">
         <div style={divStyle1}/>
 
-          <img src={require("./images/GreenWave-Logo.png")} alt="GreenWaveLogo" className="img-responsive" />
-        
+          
 
           <h1>Welcome to GreenWave</h1></div>
            {/* if user signed in */}
