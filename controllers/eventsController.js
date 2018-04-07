@@ -12,7 +12,7 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
   getMyEvents: function(req, res) {
-    db.Event.find().sort({ date: 1 })
+    db.Event.find({ createdBy: req.params.username }).sort({ date: 1 })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
@@ -20,6 +20,9 @@ module.exports = {
     db.Event.findOneAndUpdate({ _id: req.params.id }, req.body)
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
+  },
+  updateAttendees: function(req, res) {
+    db.Event.update({ _id: req.params.id}, { $push: {attendees: eventData.attendees }});
   },
   remove: function(req, res) {
     db.Event.findById({ _id: req.params.id })

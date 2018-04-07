@@ -73,7 +73,7 @@ class EventModal extends Component {
             });
         }
 
-        promise
+        this.props.onSubmit && this.props.onSubmit(eventData)
         .then(res => {
             this.setState({
                 title: '',
@@ -97,9 +97,7 @@ class EventModal extends Component {
         const isEditing = !!event;
         return (
             <div>
-                <button type="button" className="btn btn-primary" onClick={this.openModal}>
-                    {isEditing ? "Edit" : "Create Event"}
-                </button>
+                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 140}}>Create Event</button>}
                 {status && 
                     <div className="card">
                         <div className="card-body">
