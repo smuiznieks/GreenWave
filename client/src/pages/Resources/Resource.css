@@ -1,0 +1,8 @@
+.cardStyles {
+    min-height: 510px;
+    margin: 10px 0
+}
+
+.cardText {
+    font-size: .8em;
+}
