@@ -21,7 +21,7 @@ class Profile extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col lg="3" md="4" sm="3">
                         <EventModal /> 
                         <LocationModal />
                     </Col>

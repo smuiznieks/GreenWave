@@ -48,13 +48,13 @@ class LocationList extends Component {
         const { locations } = this.state;
         return (
             <Fragment>
-                <h2 className="listHeader">Manage My Locations</h2>
+                <h1>Manage My Locations</h1>
                 {locations && locations.length ? (
                     <List>
                         {this.renderLocations()}
                     </List>
                 ) : (
-                    <h5>No results to display. Add a location by clicking the <strong>Create Location</strong> button above.</h5>
+                    <h5 className="noResults">Add a location by clicking the <strong>Create Location</strong> button above.</h5>
                 )}
             </Fragment>
         );
