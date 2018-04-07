@@ -4,6 +4,7 @@ import { Input, FormBtn } from "../../components/Form";
 import { withUser } from '../../services/withUser';
 import Modal from 'react-modal';
 
+
 class LocationModal extends Component {
     constructor(props) {
         super(props);
@@ -97,7 +98,7 @@ class LocationModal extends Component {
         const isEditing = !!location;
         return (
            <div>
-                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 140}}>Create Location</button>}
+                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140}}>Create Location</button>}
                 {status && 
                     <div className="card">
                         <div className="card-body">
@@ -110,7 +111,7 @@ class LocationModal extends Component {
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     contentLabel="Event Modal"
-                    ariaHideApp={false}
+                    ariaHideApp={true}
                 >
                     <div className="modal-content">
                         <div className="modal-header">

@@ -1,0 +1,24 @@
+.listButton {
+    margin: 5px;
+    width: 80px;
+}
+
+.listBorder {
+    border: 1px solid #066a89;
+    margin: 20px 0;
+    box-shadow: 0 0 10px #ddd;
+}
+
+.listColor {
+    background-color: #ddd;
+    color: #066a89;
+    margin: 15px;
+}
+
+.listHeader {
+    text-align: center;
+    text-transform: uppercase;
+    color: #64cbe6;
+    margin-top: 30px;
+    padding: 10px;
+}

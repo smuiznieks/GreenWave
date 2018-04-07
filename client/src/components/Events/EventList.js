@@ -3,6 +3,8 @@ import { withUser } from '../../services/withUser';
 import API from '../../utils/API';
 import EventModal from './EventModal';
 import { List, ListItem, ListBtn } from "../List";
+import { CardText, CardBody, CardTitle } from 'reactstrap';
+import "./Events.css";
 
 class EventList extends Component {
     state = {
@@ -42,9 +44,8 @@ class EventList extends Component {
                 const Owner = event.createdBy === username;
                 return (
                     <ListItem key={event._id}>
-                        {Owner && <h6>My Event</h6>}
-                        <h5>{event.title}</h5>
-                <p>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}{Owner && <span><br />Attendees: {event.attendees}</span>}</p>
+                        <CardTitle className="eventTitle">{event.title}</CardTitle>
+                        <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}{Owner && <span><br />Attendees: {event.attendees}</span>}</CardText>
                         {Owner && <EventModal event={event} />}
                         {Owner && <ListBtn onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
                         {!Owner && <ListBtn onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
@@ -59,10 +60,10 @@ class EventList extends Component {
         const { events } = this.state;
         return (
             <Fragment>
-                <h2>{ myEvents ? "Manage My Events" : "Browse Green Events"}</h2>
+                <h2 className="listHeader">{ myEvents ? "Manage My Events" : "Browse Green Events"}</h2>
                 {events && events.length ? (
                     <List>
-                    {this.renderEvents()}
+                        {this.renderEvents()}
                     </List>
                 ) : (
                     <h5>No results to display. Add an event by clicking the <strong>Create Event</strong> button above.</h5>

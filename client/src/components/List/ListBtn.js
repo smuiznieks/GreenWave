@@ -1,6 +1,9 @@
 import React from "react";
+import { Button } from 'reactstrap';
+import "./List.css";
+
 export const ListBtn = props => (
-  <button {...props} style={{margin: 10, width: 80}} className="btn btn-primary">
+  <Button {...props} className="listButton" >
     {props.children}
-  </button>
+  </Button>
 );

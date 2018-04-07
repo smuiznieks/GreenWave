@@ -97,7 +97,7 @@ class EventModal extends Component {
         const isEditing = !!event;
         return (
             <div>
-                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 140}}>Create Event</button>}
+                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140}}>Create Event</button>}
                 {status && 
                     <div className="card">
                         <div className="card-body">
@@ -110,7 +110,7 @@ class EventModal extends Component {
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     contentLabel="Event Modal"
-                    ariaHideApp={false}
+                    ariaHideApp={true}
                 >
                     <div className="modal-content">
                         <div className="modal-header">

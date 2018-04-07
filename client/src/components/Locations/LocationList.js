@@ -3,6 +3,7 @@ import { withUser } from '../../services/withUser';
 import API from '../../utils/API';
 import LocationModal from './LocationModal';
 import { List, ListItem, ListBtn } from "../List";
+import { CardText, CardBody, CardLink, CardTitle, CardSubtitle } from 'reactstrap';
 
 class LocationList extends Component {
     state = {
@@ -32,9 +33,8 @@ class LocationList extends Component {
                 const Owner = location.createdBy === username;
                 return (
                     <ListItem key={location._id}>
-                        {Owner && <h6>My Location</h6>}
-                        <h5>{location.title}</h5>
-                        <p>Address: {location.address}<br />Category: {location.category}<br />Score: {location.score}</p>
+                        <CardTitle>{location.title}</CardTitle>
+                        <CardText>Address: {location.address}<br />Category: {location.category}<br />Green Factor: {location.score}</CardText>
                         {Owner && <LocationModal location={location} />}
                         {Owner && <ListBtn onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
                     </ListItem>
@@ -48,7 +48,7 @@ class LocationList extends Component {
         const { locations } = this.state;
         return (
             <Fragment>
-                <h2>Manage My Locations</h2>
+                <h2 className="listHeader">Manage My Locations</h2>
                 {locations && locations.length ? (
                     <List>
                         {this.renderLocations()}
