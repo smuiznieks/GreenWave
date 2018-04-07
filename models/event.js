@@ -33,11 +33,6 @@ const EventSchema= new Schema({
 		required: true
 	},
 
-	attendeeCount:{
-		type: Number,
-		default: 0
-	},
-
 	attendees:{
 		type: Array,
 		default: []

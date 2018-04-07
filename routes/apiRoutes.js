@@ -32,7 +32,7 @@ router.get('/events/:username', eventsController.getMyEvents);
 router.put('/events/:id', eventsController.updateEvent);
 
 // Update attendees
-router.put('/events/:id', eventsController.updateAttendees);
+router.put('/attendees/:id', eventsController.updateAttendees);
 
 // Delete an event
 router.delete('/events/:id', eventsController.remove);

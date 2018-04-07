@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Col, Row, Container } from "../../components/Grid";
 import { withUser } from '../../services/withUser';
-import { EventList, EventModal} from '../../components/Events';
+import { AttendingList, EventList, EventModal} from '../../components/Events';
 import { LocationList, LocationModal} from "../../components/Locations";
 
 class Profile extends Component {
@@ -43,7 +43,7 @@ class Profile extends Component {
                 <hr />
                 <Row>
                     <Col size="sm-12">
-                        <h2>My Upcoming Events</h2>
+                        <AttendingList />
                     </Col>
                 </Row>
                 <Row>

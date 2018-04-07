@@ -3,16 +3,18 @@ import { withUser } from '../../services/withUser';
 import API from '../../utils/API';
 import { List, ListItem, ListBtn } from "../List";
 
-class EventList extends Component {
+class AttendingList extends Component {
     state = {
         events: null
     };
 
     render() {
-        <Fragment>
-            <h2>My Upcoming Events</h2>
-        </Fragment>
+        return (
+            <Fragment>
+                <h2>My Upcoming Events</h2>
+            </Fragment>
+        )
     }
 }
 
-export default withUser(RsvpList);
+export default withUser(AttendingList);
