@@ -44,11 +44,11 @@ class EventList extends Component {
                 const Owner = event.createdBy === username;
                 return (
                     <ListItem key={event._id}>
-                        <CardTitle className="eventTitle">{event.title}</CardTitle>
+                        <CardTitle className="profileTitle">{event.title}</CardTitle>
                         <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}{Owner && <span><br />Attendees: {event.attendees}</span>}</CardText>
                         {Owner && <EventModal event={event} />}
-                        {Owner && <ListBtn onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
-                        {!Owner && <ListBtn onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
+                        {Owner && <ListBtn className="profileButton" onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
+                        {!Owner && <ListBtn className="profileButton" onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
                     </ListItem>
                 )
             })
@@ -60,13 +60,13 @@ class EventList extends Component {
         const { events } = this.state;
         return (
             <Fragment>
-                <h2 className="listHeader">{ myEvents ? "Manage My Events" : "Browse Green Events"}</h2>
+                <h1>{ myEvents ? "Manage My Events" : "Browse Green Events"}</h1>
                 {events && events.length ? (
                     <List>
                         {this.renderEvents()}
                     </List>
                 ) : (
-                    <h5>No results to display. Add an event by clicking the <strong>Create Event</strong> button above.</h5>
+                    <h5 className="noResults">Add an event by clicking the <strong>Create Event</strong> button above.</h5>
                 )}
             </Fragment>
         );

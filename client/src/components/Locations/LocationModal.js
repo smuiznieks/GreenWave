@@ -108,6 +108,7 @@ class LocationModal extends Component {
                 }   
                 {/* Location Modal */}
                 <Modal
+                    className="modalOpen"
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     contentLabel="Event Modal"

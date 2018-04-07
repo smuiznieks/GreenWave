@@ -10,7 +10,7 @@ class Events extends Component {
       <Container>
         <Row>
           <Col>
-            <EventList />
+            <EventList className="eventPage" />
           </Col>
         </Row>
       </Container>

@@ -3,12 +3,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-import LoginMenu from './LoginMenu';
 import { update } from '../../services/withUser';
 import { withUser } from '../../services/withUser';
 
-
-export const Navbar = (props) => {
+export const Navigation = (props) => {
     const { user } = props;
     const username = user ? user.username : null;
 
@@ -29,7 +27,6 @@ export const Navbar = (props) => {
     };
 
     return (
-        
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="/">GreenWave</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,4 +52,4 @@ export const Navbar = (props) => {
     );
 }
 
-export default withRouter(withUser(Navbar));
+export default withRouter(withUser(Navigation));

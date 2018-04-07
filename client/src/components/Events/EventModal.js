@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import { withUser } from '../../services/withUser';
 import Modal from 'react-modal';
+import './Events.css';
 
 class EventModal extends Component {
     constructor(props) {
@@ -106,7 +107,8 @@ class EventModal extends Component {
                     </div>
                 }
                 {/* Event Modal */}
-                <Modal
+                <Modal 
+                    className="modalOpen"
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     contentLabel="Event Modal"
