@@ -11,7 +11,7 @@ class AttendingList extends Component {
     render() {
         return (
             <Fragment>
-                <h2>My Upcoming Events</h2>
+                <h2 className="listHeader">My Upcoming Events</h2>
             </Fragment>
         )
     }
