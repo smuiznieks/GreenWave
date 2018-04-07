@@ -97,9 +97,7 @@ class LocationModal extends Component {
         const isEditing = !!location;
         return (
            <div>
-                <button type="button" className="btn btn-primary" onClick={this.openModal}>
-                    {isEditing ? "Edit" : "Create Location"}
-                </button>
+                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{margin: 10, width: 140}}>Create Location</button>}
                 {status && 
                     <div className="card">
                         <div className="card-body">

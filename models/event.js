@@ -36,9 +36,15 @@ const EventSchema= new Schema({
 	attendeeCount:{
 		type: Number,
 		default: 0
+	},
+
+	attendees:{
+		type: Array,
+		default: []
 	}
 
 });
 
-const Event=mongoose.model("Event", EventSchema);
-module.exports=Event;
+const Event = mongoose.model("Event", EventSchema);
+
+module.exports = Event;
