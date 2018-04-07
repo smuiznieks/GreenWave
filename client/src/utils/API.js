@@ -22,7 +22,7 @@ export default {
     },
 
     updateAttendees: function(eventData) {
-        return axios.put(`/api/events/${eventData._id}`, eventData);
+        return axios.put(`/api/attendees/${eventData._id}`, eventData);
     },
 
     // Get events created by user
