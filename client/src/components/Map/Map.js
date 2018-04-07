@@ -7,6 +7,9 @@ import API from "../../utils/API";
 import "./map.css";
 import { ScoreBtn } from "./ScoreBtn";
 import { Vote } from "./Vote";
+import { HighestRated } from "./HighestRated";
+
+
 
 
 
@@ -81,7 +84,7 @@ export const StyledMapWithAnInfoBox = compose(
 						<p>{props.openLocation.address}<br />{props.openLocation.zipcode}</p>
 						<p><span className="mapBoldText">Category:</span> {props.openLocation.category}</p>
 						<hr />
-						<Vote location = {props.openLocation} />
+						<Vote location={props.openLocation} />
 					</div>
 				</div>
 			</InfoBox>

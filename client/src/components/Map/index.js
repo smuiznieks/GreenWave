@@ -1,3 +1,5 @@
 export * from './Map';
-// export * from './InfoWindow';
-// export * from './Marker';
+export * from './ScoreBtn';
+export * from './Vote';
+export * from './HighestRated';
+
