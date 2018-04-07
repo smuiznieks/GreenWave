@@ -1,6 +1,11 @@
 import React from "react";
+import { Card, CardBody } from 'reactstrap';
+import "./List.css";
+
 export const ListItem = props => (
-  <li className="list-group-item">
-    {props.children}
-  </li>
+  <Card className="listBorder">
+    <CardBody className="listColor">
+      {props.children}
+    </CardBody>
+  </Card>
 );
