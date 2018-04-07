@@ -44,7 +44,7 @@ class EventList extends Component {
                     <ListItem key={event._id}>
                         {Owner && <h6>My Event</h6>}
                         <h5>{event.title}</h5>
-                        <p>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}</p>
+                <p>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}{Owner && <span><br />Attendees: {event.attendees}</span>}</p>
                         {Owner && <EventModal event={event} />}
                         {Owner && <ListBtn onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
                         {!Owner && <ListBtn onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
