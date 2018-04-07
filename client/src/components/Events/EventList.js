@@ -22,22 +22,32 @@ class EventList extends Component {
 
     deleteEvent = (id) => {
         API.deleteEvent(id)
-        .then(res => this.loadEvents)
+        .then(res => this.loadEvents())
         .catch(err => console.log(err));
     }
 
+    handleRSVP = (id) => {
+        API.updateAttendees({
+            attendees: this.props.user.username,
+            _id: id
+        })
+        .then(res => this.loadEvents())
+        .catch(err => console.log(err))
+    }
+
     renderEvents() {
-        const {username} = this.props.user;
+        const { username } = this.props.user;
         return (
             this.state.events.map(event => {
                 const Owner = event.createdBy === username;
                 return (
                     <ListItem key={event._id}>
+                        {Owner && <h6>My Event</h6>}
                         <h5>{event.title}</h5>
-                        <p>When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendeeCount}</p>
+                        <p>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}</p>
                         {Owner && <EventModal event={event} />}
                         {Owner && <ListBtn onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
-                        {!Owner && <ListBtn>RSVP</ListBtn>}
+                        {!Owner && <ListBtn onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
                     </ListItem>
                 )
             })
@@ -45,11 +55,11 @@ class EventList extends Component {
     }
 
     render() {
-        const {myEvents} = this.props;
+        const { myEvents } = this.props;
         const { events } = this.state;
         return (
             <Fragment>
-                <h2>{ myEvents ? "Organize My Community" : "Browse Green Events"}</h2>
+                <h2>{ myEvents ? "Manage My Events" : "Browse Green Events"}</h2>
                 {events && events.length ? (
                     <List>
                     {this.renderEvents()}

@@ -21,6 +21,9 @@ module.exports = {
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
+  updateAttendees: function(req, res) {
+    db.Event.update({ _id: req.params.id}, { $push: {attendees: eventData.attendees }});
+  },
   remove: function(req, res) {
     db.Event.findById({ _id: req.params.id })
     .then(dbModel => dbModel.remove())

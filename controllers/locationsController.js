@@ -19,6 +19,12 @@ module.exports = {
             })
     },
 
+    getAllLocations: function(req, res) {
+        db.Location.find()
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+
     getMyLocations: function(req, res) {
         db.Location.find({ createdBy: req.params.username }).sort({ score: -1 })
         .then(dbModel => res.json(dbModel))

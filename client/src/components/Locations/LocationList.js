@@ -32,6 +32,7 @@ class LocationList extends Component {
                 const Owner = location.createdBy === username;
                 return (
                     <ListItem key={location._id}>
+                        {Owner && <h6>My Location</h6>}
                         <h5>{location.title}</h5>
                         <p>Address: {location.address}<br />Category: {location.category}<br />Score: {location.score}</p>
                         {Owner && <LocationModal location={location} />}
@@ -47,7 +48,7 @@ class LocationList extends Component {
         const { locations } = this.state;
         return (
             <Fragment>
-                <h2>Grow My Community</h2>
+                <h2>Manage My Locations</h2>
                 {locations && locations.length ? (
                     <List>
                         {this.renderLocations()}
