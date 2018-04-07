@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { update } from '../../services/withUser';
 import { LoginBtn, LoginInput } from '../../components/LoginConsole';
 import API from '../../utils/API';
+import { UncontrolledCarousel } from 'reactstrap';
 
 class LoginPage extends Component {
   state = {
@@ -41,10 +42,24 @@ class LoginPage extends Component {
 
   render() {
     const { error } = this.state;
+    const items = [
+      {
+        src: './assets/images/Recycling(2).jpg',
+        altText: 'Slide 1'
+      },
+      {
+        src: './assets/images/Recycling(CardboardBale).jpg',
+        altText: 'Slide 2'
+      },
+      {
+        src: './assets/images/Recycling(3).jpg',
+        altText: 'Slide 3'
+      }
+    ];  
     return (
       <Container>
         <Row>
-          <Col size="lg-4 md-6 sm-12>">
+          <Col size="lg-4 md-6 sm-12">
             <form onSubmit={this.handleLogin}>
               <h1>Log In</h1>
               {error &&
@@ -75,6 +90,9 @@ class LoginPage extends Component {
                 or <Link to='/create'>Create an Account</Link>
               </p>
             </form>
+          </Col>
+          <Col size="lg-4 md-6 sm-12">
+            <UncontrolledCarousel items={items} />
           </Col>
         </Row>
       </Container>

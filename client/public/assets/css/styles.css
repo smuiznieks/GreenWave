@@ -1,3 +1,16 @@
 body {
     font-family: 'Raleway', sans-serif;
 }
+
+
+footer {
+	color: green;
+    background-color: #013220;
+}
+
+.btn:hover {
+  background-color: #00FF00;
+  transition: 0.3s ease all;
+}
+
+
