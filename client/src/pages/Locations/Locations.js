@@ -7,10 +7,10 @@ import HighestRated from '../../components/Map/HighestRated';
 class Locations extends Component {
     render() {
         return (
-            <Container>
-                <Map/>
-                <HighestRated/>
-            </Container>
+            <div>
+                <Map />
+                <HighestRated />
+            </div>
         );
     }
 }

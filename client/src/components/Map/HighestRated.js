@@ -5,42 +5,44 @@ import { Container, Row, Col, Card, CardTitle, CardText } from 'reactstrap';
 class HighestRated extends Component {
     render() {
         return (
-            <Container>
-                <Row>
-                    <Col md="12">
-                        <h1 className="HighRated-Header">Highest Rated Green Locations</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md="4">
-                        <div className="cardBorder">
-                            <div className="rating">1</div>
-                            <Card body className="cardColor">
-                                <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col md="4">
-                        <div className="cardBorder">
-                        <div className="rating">2</div>
-                            <Card body className="cardColor">
-                                <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col md="4">
-                        <div className="cardBorder">
-                        <div className="rating">3</div>
-                            <Card body className="cardColor">
-                                <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                            </Card>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <div>
+                <Container>
+                    <Row>
+                        <Col md="12">
+                            <h1 className="HighRated-Header">Highest Rated Green Locations</h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md="4">
+                            <div className="cardBorder">
+                                <div className="rating">1</div>
+                                <Card body className="cardColor">
+                                    <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
+                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                </Card>
+                            </div>
+                        </Col>
+                        <Col md="4">
+                            <div className="cardBorder">
+                                <div className="rating">2</div>
+                                <Card body className="cardColor">
+                                    <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
+                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                </Card>
+                            </div>
+                        </Col>
+                        <Col md="4">
+                            <div className="cardBorder">
+                                <div className="rating">3</div>
+                                <Card body className="cardColor">
+                                    <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
+                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+                                </Card>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         );
     }
 }
