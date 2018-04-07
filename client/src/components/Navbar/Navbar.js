@@ -46,6 +46,7 @@ export const Navbar = (props) => {
                             <a className="nav-item nav-link" href="/profile">Profile</a>
                             <a className="nav-item nav-link" href="/events">Events</a>
                             <a className="nav-item nav-link" href="/locations">Locations</a>
+                            <a className="nav-item nav-link" href="/resources">Resources</a>
                             <LogoutButton onClick={handleLogOut} />
                     </div>
                 }

@@ -50,18 +50,8 @@ class HomePage extends Component {
           
 
           <h1>Welcome to GreenWave</h1></div>
-           {/* if user signed in */}
 
-         <Row>
-             {user &&
-                 <div>Hi there, {user.username}!</div>
-             }
-             {!user &&
-                  <div>
-                     <h2>Hey! I do not recognize you! Log in using the link above.</h2>
-                  </div>
-              }
-        </Row>
+
 
         
         <div className="main-container" style={{position: 'relative', width: '100%', height:'100%'}}>
