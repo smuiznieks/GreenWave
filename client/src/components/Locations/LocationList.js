@@ -5,6 +5,7 @@ import API from '../../utils/API';
 import LocationModal from './LocationModal';
 import { List, ListItem, ListBtn } from "../List";
 import { CardText, CardTitle } from 'reactstrap';
+import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
 
 class LocationList extends Component {
     state = {
@@ -43,6 +44,17 @@ class LocationList extends Component {
                                 {Owner && <LocationModal location={location} />}
                                 {Owner && <ListBtn style={{float: "right"}} onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
                             </Col>
+                        </Row>
+                        <Row>
+                            <FacebookShareButton url="https://github.com" quote={"Check out this awesome spot I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!"} hashtag="#GreenCityBlueLake">
+                                <i className="fab fa-facebook-square shareIcon" />
+                            </FacebookShareButton>
+                            <TwitterShareButton url="https://github.com" title={"Check out this awesome spot I found on GreenWave.com --- " + location.title + " at " + location.address + ". It even has a Green Factor score of " + location.score + "!!"}>
+                                <i className="fab fa-twitter-square shareIcon" />
+                            </TwitterShareButton>
+                            <EmailShareButton url="https://github.com" subject={"Neighborhood Gem --- " + location.title} body={"Hi there! Check out this awesome spot I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!\n\n#GreenCityBlueLake" }>
+                                <i className="fas fa-envelope-square shareIcon" />
+                            </EmailShareButton>
                         </Row>
                     </ListItem>
                 )

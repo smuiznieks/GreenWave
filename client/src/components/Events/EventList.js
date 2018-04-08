@@ -5,6 +5,7 @@ import API from '../../utils/API';
 import EventModal from './EventModal';
 import { List, ListItem, ListBtn } from "../List";
 import { CardText, CardTitle } from 'reactstrap';
+import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
 import "./Events.css";
 
 class EventList extends Component {
@@ -59,6 +60,17 @@ class EventList extends Component {
                                 {Owner && <ListBtn style={{float: "right"}} onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
                                 {!Owner && <ListBtn style={{float: "right"}} onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
                             </Col>
+                        </Row>
+                        <Row>
+                            <FacebookShareButton url="https://github.com" quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">
+                                <i className="fab fa-facebook-square shareIcon" />
+                            </FacebookShareButton>
+                            <TwitterShareButton url="https://github.com" title={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} >
+                                <i className="fab fa-twitter-square shareIcon" />
+                            </TwitterShareButton>
+                            <EmailShareButton url="https://github.com" subject={"Join me at " + event.title} body={"Hi there! Check out this event I found on GreenWave.com\n\n" + event.title + " on " + event.date + " at " + event.location + ".\n\n" + event.description + "\n\nHope you can make it! #GreenCityBlueLake" }>
+                                <i className="fas fa-envelope-square shareIcon" />
+                            </EmailShareButton>
                         </Row>
                     </ListItem>
                 )

@@ -55,3 +55,12 @@
 .close {
     color: white;
 }
+
+.shareIcon {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.SocialMediaShareButton {
+    padding: 8px;
+}
