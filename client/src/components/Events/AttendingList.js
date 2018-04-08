@@ -11,7 +11,15 @@ class AttendingList extends Component {
 
     loadRSVPs() {
         API.getMyRSVPs(this.props.user.username)
-        .then(res => console.log(res.data))
+        // .then(res => console.log(res.data))
+        .then(function(res) {
+            const eventInfo = [];
+            for (var i = 0; i < res.data.length; i++) {
+                eventInfo.push(res.data[i].eventId)
+            }
+            console.log(eventInfo);
+        })
+        // .then(res => this.setState({ rsvps: [res.data] }))
         .catch(err => console.log(err))
     }
 
@@ -20,8 +28,7 @@ class AttendingList extends Component {
     }
 
     renderEvents() {
-        const { username } = this.props.user;
-
+        const { username } = this.props.user; 
         return (
             this.state.events.map(event => {
                 return (
