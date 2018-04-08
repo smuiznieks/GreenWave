@@ -3,14 +3,11 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
-import LoginMenu from './LoginMenu';
 import { update } from '../../services/withUser';
 import { withUser } from '../../services/withUser';
 
-
-export const Navbar = (props) => {
+export const Navigation = (props) => {
     const { user } = props;
-    const username = user ? user.username : null;
 
     const handleLogIn = () => {
         props.history.push('/login');
@@ -29,9 +26,7 @@ export const Navbar = (props) => {
     };
 
     return (
-        
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/">GreenWave</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
@@ -46,6 +41,7 @@ export const Navbar = (props) => {
                             <a className="nav-item nav-link" href="/profile">Profile</a>
                             <a className="nav-item nav-link" href="/events">Events</a>
                             <a className="nav-item nav-link" href="/locations">Locations</a>
+                            <a className="nav-item nav-link" href="/resources">Resources</a>
                             <LogoutButton onClick={handleLogOut} />
                     </div>
                 }
@@ -54,4 +50,4 @@ export const Navbar = (props) => {
     );
 }
 
-export default withRouter(withUser(Navbar));
+export default withRouter(withUser(Navigation));
