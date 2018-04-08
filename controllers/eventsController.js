@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require('../models');
 
 module.exports = {
   createEvent: function(req, res) {
@@ -23,6 +23,17 @@ module.exports = {
   },
   updateAttendees: function(req, res) {
     db.Event.update({ _id: req.params.id}, { $push: { attendees: req.body.attendees }})
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
+  updateRsvp: function(req, res) {
+    db.Rsvp.create(req.body)
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+  },
+  getRsvp: function(req, res) {
+    db.Rsvp.find({ user: req.params.username})
+    .populate('eventId')
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },

@@ -1,0 +1,16 @@
+p.loginStyle {
+    color: #066a89;
+}
+
+label {
+    color: #066a89;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: 1.2em;
+}
+
+.link {
+    color: #64cbe6;
+}
+

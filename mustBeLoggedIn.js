@@ -1,14 +1,10 @@
 module.exports = function() {
     return (req, res, next) => {
-      // if the user is authenticated, we're all good here. let the next middleware handle it.
+      // Xhecks if the user is authenticated
       if (req.isAuthenticated()) {
         return next();
       }
-  
-      // if we've gotten to this point, that means the user is NOT authenticated but should be
-      // so let's respond with an appropriate 403 Forbidden reponse
-  
-      // if the client says they want JSON, this is probably an AJAX call so let's respond with a JSON error
+      // 403 error for users who have not been authenticated but should be
       if (req.accepts('json')) {
         res.status(403).json({
           message: 'You must be logged in to perform this action.'

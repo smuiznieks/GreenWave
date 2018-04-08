@@ -16,23 +16,23 @@ class Profile extends Component {
         return (
             <Container>
                 <Row>
-                    <Col>
-                        <h1 className="text-center" style={{margin: 40}}>Let's save Mother Earth together, {user.username}!</h1>
+                    <Col sm="12">
+                        <h1 className="text-center" style={{marginTop: 40}}>Let's save Mother Earth together, {user.username}!</h1>
                     </Col>
                 </Row>
                 <Row>
-                    <Col lg="3" md="4" sm="3">
+                    <Col sm="12" className="d-flex justify-content-center">
                         <EventModal /> 
                         <LocationModal />
                     </Col>
                 </Row>
                 <hr />
                 <Row>
-                    <Col>
+                    <Col sm="12">
                         <AttendingList upcomingEvents />
                     </Col>
                 </Row>
-                <Row>
+                <Row style={{marginBottom: 40}}>
                     <Col sm="12" md="6">
                         <EventList myEvents />
                     </Col>
