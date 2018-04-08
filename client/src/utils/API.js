@@ -21,13 +21,23 @@ export default {
         return axios.put(`/api/events/${eventData._id}`, eventData);
     },
 
+    // Handle RSVP responses
     updateAttendees: function(eventData) {
         return axios.put(`/api/attendees/${eventData._id}`, eventData);
+    },
+
+    updateRSVP: function(eventData) {
+        return axios.post(`/api/rsvp/{${eventData.user}`, eventData);
     },
 
     // Get events created by user
     getMyEvents: function(username) {
         return axios.get(`/api/events/${username}`);
+    },
+
+    // Get user RSVPs
+    getMyRSVPs: function(username) {
+        return axios.get(`/api/rsvp/${username}`);
     },
 
     // Get all events

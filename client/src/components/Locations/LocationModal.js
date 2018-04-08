@@ -16,7 +16,6 @@ class LocationModal extends Component {
                 address: address,
                 zipcode: zipcode,
                 category: category,
-                status: null,
                 modalIsOpen: false
             };
         } else {
@@ -25,7 +24,6 @@ class LocationModal extends Component {
                 address: '',
                 zipcode: '',
                 category: '',
-                status: null,
                 modalIsOpen: false
             };
         }
@@ -82,7 +80,6 @@ class LocationModal extends Component {
                 locAddress: '',
                 locZipcode: '',
                 locCategory: '',
-                status: 'Thank you for contributing to your community! Your location has been saved.'
             });  
         })
         .catch(err => {
@@ -93,19 +90,11 @@ class LocationModal extends Component {
     };
 
     render() {
-        const { status } = this.state;
         const { location } = this.props;
         const isEditing = !!location;
         return (
            <div>
-                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140}}>Create Location</button>}
-                {status && 
-                    <div className="card">
-                        <div className="card-body">
-                            {status}
-                        </div>
-                    </div>
-                }   
+                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80, float: "right", margin: 5}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140, margin: 20}}>Create Location</button>} 
                 {/* Location Modal */}
                 <Modal
                     className="modalOpen"

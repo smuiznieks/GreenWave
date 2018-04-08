@@ -8,7 +8,6 @@ import { withUser } from '../../services/withUser';
 
 export const Navigation = (props) => {
     const { user } = props;
-    const username = user ? user.username : null;
 
     const handleLogIn = () => {
         props.history.push('/login');
