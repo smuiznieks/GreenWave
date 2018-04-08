@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Container } from '../../components/Grid';
+import { Container, Row, Col } from 'reactstrap';
 
 class NotFound extends Component {
     state = {
@@ -10,7 +10,7 @@ class NotFound extends Component {
         return (
             <Container>
                 <Row>
-                    <Col size="lg-4 md-6 sm-12>">
+                    <Col sm="12" className="mx-auto">
                         <h1>We're sorry, this page cannot be found.</h1>
                     </Col>
                 </Row>

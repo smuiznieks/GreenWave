@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import { withUser } from '../../services/withUser';
 import Modal from 'react-modal';
+import './Events.css';
 
 class EventModal extends Component {
     constructor(props) {
@@ -10,14 +11,12 @@ class EventModal extends Component {
         
         if(props.event) {
             const { title, date, time, location, description } = props.event;
-
             this.state = {
                 title: title,
                 date: date, 
                 time: time,
                 location: location,
                 description: description,
-                status: null,
                 modalIsOpen: false,
             };
         } else {
@@ -27,7 +26,6 @@ class EventModal extends Component {
                 time: '',
                 location: '',
                 description: '',
-                status: null,
                 modalIsOpen: false
             };
         }
@@ -81,7 +79,6 @@ class EventModal extends Component {
                 time: '',
                 location: '',
                 description: '',
-                status: 'Thank you for contributing to your community! Your event has been saved.'
             });  
         })
         .catch(err => {
@@ -97,16 +94,10 @@ class EventModal extends Component {
         const isEditing = !!event;
         return (
             <div>
-                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140}}>Create Event</button>}
-                {status && 
-                    <div className="card">
-                        <div className="card-body">
-                            {status}
-                        </div>
-                    </div>
-                }
+                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80, float: "right", margin: 5}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140, margin: 20}}>Create Event</button>}
                 {/* Event Modal */}
-                <Modal
+                <Modal 
+                    className="modalOpen"
                     isOpen={this.state.modalIsOpen}
                     onRequestClose={this.closeModal}
                     contentLabel="Event Modal"

@@ -1,6 +1,3 @@
-// import axios from 'axios';
-// import React, { Component, Fragment } from 'react';
-// import { withUser, update } from './services/withUser';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './pages/Create';
@@ -10,13 +7,13 @@ import Locations from './pages/Locations';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
-import Navbar from './components/Navbar/Navbar';
+import Navigation from './components/Navbar/Navbar';
 import './App.css';
 
 const App = () => (
   <Router>
     <div>
-      <Navbar />
+      <Navigation />
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/login' component={Login} />

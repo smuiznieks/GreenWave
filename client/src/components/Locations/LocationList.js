@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
+import { Row, Col } from 'reactstrap';
 import { withUser } from '../../services/withUser';
 import API from '../../utils/API';
 import LocationModal from './LocationModal';
 import { List, ListItem, ListBtn } from "../List";
-import { CardText, CardBody, CardLink, CardTitle, CardSubtitle } from 'reactstrap';
+import { CardText, CardTitle } from 'reactstrap';
 
 class LocationList extends Component {
     state = {
@@ -33,10 +34,16 @@ class LocationList extends Component {
                 const Owner = location.createdBy === username;
                 return (
                     <ListItem key={location._id}>
-                        <CardTitle>{location.title}</CardTitle>
-                        <CardText>Address: {location.address}<br />Category: {location.category}<br />Green Factor: {location.score}</CardText>
-                        {Owner && <LocationModal location={location} />}
-                        {Owner && <ListBtn onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
+                        <CardTitle className="profileTitle">{location.title}</CardTitle>
+                        <Row>
+                            <Col sm="8">
+                                <CardText>Address: {location.address}<br />Category: {location.category}<br />Green Factor: {location.score}</CardText>
+                            </Col>
+                            <Col sm="4">
+                                {Owner && <LocationModal location={location} />}
+                                {Owner && <ListBtn style={{float: "right"}} onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
+                            </Col>
+                        </Row>
                     </ListItem>
                 )
             })
@@ -48,13 +55,13 @@ class LocationList extends Component {
         const { locations } = this.state;
         return (
             <Fragment>
-                <h2 className="listHeader">Manage My Locations</h2>
+                <h1>Manage My Locations</h1>
                 {locations && locations.length ? (
                     <List>
                         {this.renderLocations()}
                     </List>
                 ) : (
-                    <h5>No results to display. Add a location by clicking the <strong>Create Location</strong> button above.</h5>
+                    <h5 className="noResults">Add a location by clicking the <strong>Create Location</strong> button above.</h5>
                 )}
             </Fragment>
         );

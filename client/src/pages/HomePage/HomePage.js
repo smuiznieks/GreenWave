@@ -1,19 +1,12 @@
-import axios from 'axios';
 import React, { Component } from 'react';
-import { Col, Row, Container } from '../../components/Grid';
+import { Container, Row, Col } from 'reactstrap';
 import { withUser } from '../../services/withUser';
-import "./HomePage.css";
+import './HomePage.css';
 
 class HomePage extends Component {
 
-  state = {
-    user: ''
-  };
-
-
   render() {
-    // get the user prop from props
-    const { user } = this.props; 
+
     const divStyle = {
       backgroundImage: "url('./assets/images/TreeGrowingOnAGreenHillWithSunshine.jpg')",
       backgroundPosition: "center",
@@ -51,18 +44,8 @@ class HomePage extends Component {
         
 
           <h1>Welcome to GreenWave</h1></div>
-           {/* if user signed in */}
 
-         <Row>
-             {user &&
-                 <div>Hi there, {user.username}!</div>
-             }
-             {!user &&
-                  <div>
-                     <h2>Hey! I do not recognize you! Log in using the link above.</h2>
-                  </div>
-              }
-        </Row>
+
 
         
         <div className="main-container" style={{position: 'relative', width: '100%', height:'100%'}}>
@@ -71,8 +54,10 @@ class HomePage extends Component {
         
         <h2><br/><br/>          GreenWave is a community of environmentally<br/>
         conscious individuals looking to promote<br/>
-        more sustainable living in their local communities<br/><br/><br/><br/><br/><br/>
-        </h2>
+        more sustainable living in their local communities<br/><br/><br/><br/><br/><br/></h2>
+
+        <h2>Join the GreenWave Community!</h2>
+
 
         </div>
 

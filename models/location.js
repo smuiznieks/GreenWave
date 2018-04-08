@@ -2,39 +2,44 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var LocationSchema = new Schema({
+
 	title: {
 		type: String,
 		required: true
     },
+    
     latlng: {
         type: Object
     },
-	address: {
+    
+    address: {
 		type: String,
         required: true,
         unique: true
 	},
-	zipcode: {
+    
+    zipcode: {
 		type: String,
 		required: true
     },
+    
     category: {
         type: String,
         required: true
     },
+    
     score: {
         type: Number,
         default: 0
     },
+    
     createdBy: {
         type: String,
         required: true
     }
+    
 });
 
+const Location = mongoose.model('Location', LocationSchema);
 
-
-const location= mongoose.model("location", LocationSchema);
-module.exports=location;
-
-
+module.exports = Location;

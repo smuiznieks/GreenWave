@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Col, Row, Container } from '../../components/Grid';
-import { LoginBtn, LoginInput } from '../../components/LoginConsole';
+import { Container, Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { FormBtn, Input } from '../../components/Form';
 import API from '../../utils/API';
 
 class Create extends Component {
@@ -66,13 +67,12 @@ class Create extends Component {
         return re.test(value);
     }
 
-
     render() {
         const { error } = this.state;
         return (
             <Container>
-                <Row>
-                    <Col size="lg-4 md-6 sm-12>">
+                <Row style={{marginBottom: 20}}>
+                    <Col lg={{ size: 4, offset: 4}} md={{ size: 6, offset: 3}} sm="12">
                         <form>
                             <h1>Join the Movement</h1>
                             {error &&
@@ -81,7 +81,7 @@ class Create extends Component {
                                 </div>
                             }
                             <label htmlFor="email">Email</label>
-                            <LoginInput
+                            <Input
                                 value={this.state.email}
                                 onChange={this.handleInputChange}
                                 type="email"
@@ -89,33 +89,37 @@ class Create extends Component {
                                 placeholder="Email"
                             />
                             <label htmlFor="username">Username</label>
-                            <LoginInput
+                            <Input
                                 value={this.state.username}
                                 onChange={this.handleInputChange}
                                 name="username"
                                 placeholder="Username"
                             />
                             <label htmlFor="password">Password</label>
-                            <LoginInput
+                            <Input
                                 value={this.state.password}
                                 onChange={this.handleInputChange}
                                 type="password"
                                 name="password"
                                 placeholder="Password"
                             />
-                            <LoginInput
+                            <Input
                                 value={this.state.confirmPassword}
                                 onChange={this.handleInputChange}
                                 type="password"
                                 name="confirmPassword"
                                 placeholder="Confirm Password"
                             />
-                            <LoginBtn
+                            <FormBtn
                                 disabled={!(this.state.email) || !(this.state.username) || !(this.state.password) || !(this.state.confirmPassword)}
                                 onClick={this.handleLogin}
                             >
                                 Create Account
-                            </LoginBtn>
+                            </FormBtn>
+                            <p className="loginStyle">
+                                <br />
+                                or <Link className="link" to='/login'>Log In</Link> to an existing account
+                            </p>
                         </form>
                     </Col>
                 </Row>

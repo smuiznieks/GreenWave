@@ -1,9 +1,10 @@
 import React, {Component, Fragment} from 'react';
+import { Row, Col } from 'reactstrap';
 import { withUser } from '../../services/withUser';
 import API from '../../utils/API';
 import EventModal from './EventModal';
 import { List, ListItem, ListBtn } from "../List";
-import { CardText, CardBody, CardTitle } from 'reactstrap';
+import { CardText, CardTitle } from 'reactstrap';
 import "./Events.css";
 
 class EventList extends Component {
@@ -33,6 +34,10 @@ class EventList extends Component {
             attendees: this.props.user.username,
             _id: id
         })
+        API.updateRSVP({
+            user: this.props.user.username,
+            eventId: id
+        })
         .then(res => this.loadEvents())
         .catch(err => console.log(err))
     }
@@ -44,11 +49,17 @@ class EventList extends Component {
                 const Owner = event.createdBy === username;
                 return (
                     <ListItem key={event._id}>
-                        <CardTitle className="eventTitle">{event.title}</CardTitle>
-                        <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}{Owner && <span><br />Attendees: {event.attendees}</span>}</CardText>
-                        {Owner && <EventModal event={event} />}
-                        {Owner && <ListBtn onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
-                        {!Owner && <ListBtn onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
+                        <CardTitle className="profileTitle">{event.title}</CardTitle>
+                        <Row>
+                            <Col sm="8">
+                                <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}{Owner && <span><br />Attendees: {event.attendees}</span>}</CardText>
+                            </Col>
+                            <Col sm="4">
+                                {Owner && <EventModal event={event} />}
+                                {Owner && <ListBtn style={{float: "right"}} onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
+                                {!Owner && <ListBtn style={{float: "right"}} onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
+                            </Col>
+                        </Row>
                     </ListItem>
                 )
             })
@@ -60,14 +71,16 @@ class EventList extends Component {
         const { events } = this.state;
         return (
             <Fragment>
-                <h2 className="listHeader">{ myEvents ? "Manage My Events" : "Browse Green Events"}</h2>
+                { myEvents && <h1>Manage My Events</h1>}
                 {events && events.length ? (
                     <List>
                         {this.renderEvents()}
                     </List>
-                ) : (
-                    <h5>No results to display. Add an event by clicking the <strong>Create Event</strong> button above.</h5>
+                ) 
+                : (
+                    <h5 className="noResults">Add an event by clicking the <strong>Create Event</strong> button above.</h5>
                 )}
+            
             </Fragment>
         );
     }

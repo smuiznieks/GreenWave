@@ -1,3 +1,57 @@
-.eventTitle {
+.noResults {
+    text-align: center;
+    color: #066a89;
+}
+
+.profileTitle {
+    font-weight: 700;
     text-transform: uppercase;
+    text-align: center;
+}
+
+.modalOpen {
+    border: none;
+    background-color: none;
+    position: absolute; 
+    top: 80px; 
+    left: 80px; 
+    right: 80px; 
+    bottom: 80px; 
+    overflow: auto; 
+}
+
+@media (max-width: 640px) {
+    .modalOpen {
+        top: 10px; 
+        left: 10px; 
+        right: 10px; 
+        bottom: 10px; 
+    }
+}
+
+.modal-header {
+    background-color: #066a89;
+    color: white;
+    letter-spacing: 0.02em;
+    font-size: 2em;
+}
+
+.modal-content {
+    border: 1px solid #066a89;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-body {
+    color: #066a89;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: 1.2em;
+}
+
+.close {
+    color: white;
 }

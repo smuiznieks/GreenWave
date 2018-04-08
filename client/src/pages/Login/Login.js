@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Col, Row, Container } from '../../components/Grid';
+import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { update } from '../../services/withUser';
-import { LoginBtn, LoginInput } from '../../components/LoginConsole';
+import { FormBtn, Input } from '../../components/Form';
 import API from '../../utils/API';
 import { UncontrolledCarousel } from 'reactstrap';
+import './Login.css';
 
-class LoginPage extends Component {
+class Login extends Component {
   state = {
     username: '',
     password: ''
@@ -21,7 +22,6 @@ class LoginPage extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-    // const { username, password } = this.state;
     const { history } = this.props;
     // User authentication
     API.userLogin({
@@ -29,7 +29,7 @@ class LoginPage extends Component {
       password: this.state.password
     })
     .then(user => {
-      // If response is successful, direct to home page
+      // If response is successful, direct to profile page
       update(user.data);
       history.push('/profile');
     })
@@ -58,8 +58,8 @@ class LoginPage extends Component {
     ];  
     return (
       <Container>
-        <Row>
-          <Col size="lg-4 md-6 sm-12">
+        <Row style={{marginBottom: 20}}>
+          <Col lg={{ size: 4, offset: 2}} md="6" sm="12">
             <form onSubmit={this.handleLogin}>
               <h1>Log In</h1>
               {error &&
@@ -68,31 +68,31 @@ class LoginPage extends Component {
                 </div>
               }
               <label htmlFor="username">Username</label>
-              <LoginInput
+              <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 name="username"
                 placeholder="Username"
               />
               <label htmlFor="password">Password</label>
-              <LoginInput
+              <Input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 type="password"
                 name="password"
                 placeholder="Password"
               />
-              <LoginBtn onClick={this.handleLogin} >
+              <FormBtn disabled={!(this.state.username) || !(this.state.password)}onClick={this.handleLogin} >
                 Log In
-              </LoginBtn>
-              <p>
+              </FormBtn>
+              <p className="loginStyle">
                 <br />
-                or <Link to='/create'>Create an Account</Link>
+                or <Link className="link" to='/create'>Create an Account</Link>
               </p>
             </form>
           </Col>
-          <Col size="lg-4 md-6 sm-12">
-            <UncontrolledCarousel items={items} />
+          <Col lg="4" md="6" sm="12" className="mx-auto my-auto">
+            <UncontrolledCarousel className="carousel" items={items} />
           </Col>
         </Row>
       </Container>
@@ -100,4 +100,4 @@ class LoginPage extends Component {
   }
 };
 
-export default LoginPage;
+export default Login;
