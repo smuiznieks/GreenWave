@@ -40,7 +40,8 @@ class HomePage extends Component {
         <div className="Heading">
         <div style={divStyle1}/>
 
-          
+          <img src={require("./images/GreenWave-Logo.png")} alt="GreenWaveLogo" className="img-responsive" />
+        
 
           <h1>Welcome to GreenWave</h1></div>
 
@@ -53,9 +54,11 @@ class HomePage extends Component {
         
         <h2><br/><br/>          GreenWave is a community of environmentally<br/>
         conscious individuals looking to promote<br/>
+
         more sustainable living in their local communities<br/><br/><br/><br/><br/><br/></h2>
 
         <h2>Join the GreenWave Community!</h2>
+
 
         </div>
 
