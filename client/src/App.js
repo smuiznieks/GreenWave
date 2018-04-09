@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 import Navigation from './components/Navbar/Navbar';
+import footer from "./components/footer";
 import './App.css';
 
 const App = () => (
@@ -23,6 +24,9 @@ const App = () => (
         <Route exact path='/locations' component={Locations} />
         <Route component={NotFound} />
       </Switch>
+      <view style={{flex: 7, marginTop: 60}}>
+      <Route component={footer} />
+      </view>
     </div>
   </Router>
 );
