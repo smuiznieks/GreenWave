@@ -3,6 +3,8 @@ import { Row, Col } from 'reactstrap';
 import { withUser } from '../../services/withUser';
 import API from '../../utils/API';
 import { List, ListItem, ListBtn } from "../List";
+import { CardText, CardTitle } from 'reactstrap';
+import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
 
 class AttendingList extends Component {
     state = {
@@ -10,16 +12,15 @@ class AttendingList extends Component {
     };
 
     loadRSVPs() {
+        let eventInfo = [];
         API.getMyRSVPs(this.props.user.username)
-        // .then(res => console.log(res.data))
         .then(function(res) {
-            const eventInfo = [];
             for (var i = 0; i < res.data.length; i++) {
                 eventInfo.push(res.data[i].eventId)
             }
             console.log(eventInfo);
         })
-        // .then(res => this.setState({ rsvps: [res.data] }))
+        .then(res => this.setState({ events: eventInfo }))
         .catch(err => console.log(err))
     }
 
@@ -33,7 +34,21 @@ class AttendingList extends Component {
             this.state.events.map(event => {
                 return (
                     <ListItem key={event._id}>
-                        <p>{event.eventId}</p>
+                        <CardTitle className="profileTitle">{event.title}</CardTitle>
+                        <CardText>
+                            When: {event.date} at {event.time}<br />Where: {event.location}<br />{event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}
+                        </CardText>
+                        <Row>
+                            <FacebookShareButton url="https://github.com" quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">
+                                <i className="fab fa-facebook-square shareIcon" />
+                            </FacebookShareButton>
+                            <TwitterShareButton url="https://github.com" title={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} >
+                                <i className="fab fa-twitter-square shareIcon" />
+                            </TwitterShareButton>
+                            <EmailShareButton url="https://github.com" subject={"Join me at " + event.title} body={"Hi there! Check out this event I found on GreenWave.com\n\n" + event.title + " on " + event.date + " at " + event.location + ".\n\n" + event.description + "\n\nHope you can make it! #GreenCityBlueLake" }>
+                                <i className="fas fa-envelope-square shareIcon" />
+                            </EmailShareButton>
+                        </Row>
                     </ListItem>
                 )
             })
