@@ -8,12 +8,15 @@
 }
 
 .Heading {
-	text-align: center;
     color: #9cd2a2;	 
 }
 
 .footer {
 	 background-color: #013220;
 	 color: #066a89;
+}
+
+.hey{
+	text-align: center;
 }
 
