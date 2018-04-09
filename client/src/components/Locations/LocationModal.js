@@ -94,7 +94,7 @@ class LocationModal extends Component {
         const isEditing = !!location;
         return (
            <div>
-                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80, float: "right", margin: 5}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140, margin: 20}}>Create Location</button>} 
+                {isEditing ? <button type="button" id="isEditing" className="btn btn-primary" onClick={this.openModal}>Edit</button> : <button type="button" id="isCreating" className="btn btn-primary" onClick={this.openModal}>Create Location</button>} 
                 {/* Location Modal */}
                 <Modal
                     className="modalOpen"

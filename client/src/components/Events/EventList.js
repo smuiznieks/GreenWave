@@ -57,8 +57,8 @@ class EventList extends Component {
                             </Col>
                             <Col sm="4">
                                 {Owner && <EventModal event={event} />}
-                                {Owner && <ListBtn style={{float: "right"}} onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
-                                {!Owner && <ListBtn style={{float: "right"}} onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
+                                {Owner && <ListBtn onClick={() => this.deleteEvent(event._id)}>Delete</ListBtn>}
+                                {!Owner && <ListBtn onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
                             </Col>
                         </Row>
                         <Row>

@@ -42,7 +42,7 @@ class LocationList extends Component {
                             </Col>
                             <Col sm="4">
                                 {Owner && <LocationModal location={location} />}
-                                {Owner && <ListBtn style={{float: "right"}} onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
+                                {Owner && <ListBtn onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
                             </Col>
                         </Row>
                         <Row>

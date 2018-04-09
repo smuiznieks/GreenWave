@@ -94,7 +94,7 @@ class EventModal extends Component {
         const isEditing = !!event;
         return (
             <div>
-                {isEditing ? <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 80, float: "right", margin: 5}}>Edit</button> : <button type="button" className="btn btn-primary" onClick={this.openModal} style={{width: 140, margin: 20}}>Create Event</button>}
+                {isEditing ? <button type="button" id="isEditing" className="btn btn-primary" onClick={this.openModal}>Edit</button> : <button type="button" id="isCreating" className="btn btn-primary" onClick={this.openModal}>Create Event</button>}
                 {/* Event Modal */}
                 <Modal 
                     className="modalOpen"

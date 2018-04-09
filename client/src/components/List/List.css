@@ -1,6 +1,11 @@
 .listButton {
     margin: 5px;
-    width: 80px;
+    width: 90px;
+    float: right;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
 .listBorder {
