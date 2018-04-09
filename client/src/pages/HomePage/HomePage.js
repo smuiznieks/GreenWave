@@ -59,6 +59,7 @@ class HomePage extends Component {
 
         <h2>Join the GreenWave Community!</h2>
 
+
         </div>
 
 
