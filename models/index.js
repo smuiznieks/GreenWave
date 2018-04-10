@@ -1,6 +1,6 @@
 module.exports = {
     User: require('./User'),
-    Event: require('./Event'),
-    Location: require('./Location'),
-    Rsvp: require('./Rsvp')
+    Event: require('./event'),
+    Location: require('./location'),
+    Rsvp: require('./rsvp')
 };
