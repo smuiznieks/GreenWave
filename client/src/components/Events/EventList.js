@@ -53,7 +53,7 @@ class EventList extends Component {
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
                         <Row>
                             <Col sm="8">
-                                <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}{Owner && <span><br />Attendees: {event.attendees}</span>}</CardText>
+                                <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}</CardText>
                             </Col>
                             <Col sm="4">
                                 {Owner && <EventModal event={event} />}
