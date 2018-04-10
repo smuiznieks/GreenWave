@@ -6,16 +6,20 @@ import './Events.css';
 
 class Events extends Component {
   render() {
+    const { user } = this.props;
     return (
       <div className="eventsContainer">
-        <Row>
-          <Col>
-            <h1>Browse Green Events</h1>
-            <Row>
-              <EventList />
-            </Row>
-          </Col>
-        </Row>
+        {!user && <h1>Please log in to view this page.</h1>}
+        {user &&
+          <Row>
+            <Col>
+              <h1>Browse Green Events</h1>
+              <Row>
+                <EventList />
+              </Row>
+            </Col>
+          </Row>
+        }
       </div>
     );
   }
