@@ -33,7 +33,7 @@ module.exports = {
   },
   getRsvp: function(req, res) {
     db.Rsvp.find({ user: req.params.username})
-    .populate('eventId')
+    .populate({ path: 'eventId', options: { sort: { 'date': 1 }}})
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },

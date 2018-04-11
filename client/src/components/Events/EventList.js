@@ -92,7 +92,6 @@ class EventList extends Component {
                 : (
                     <h5 className="noResults">Add an event by clicking the <strong>Create Event</strong> button above.</h5>
                 )}
-            
             </Fragment>
         );
     }

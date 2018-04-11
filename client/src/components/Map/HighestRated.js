@@ -43,14 +43,18 @@ class HighestRated extends Component {
                 <Container>
                     <Row>
                         <Col md="12">
-                            <h1 className="HighRated-Header">Highest Rated Green Locations</h1>
+                            <h1 className="HighRated-Header">Highest Rated In Your Community</h1>
                         </Col>
                     </Row>
                     <Row>
-                        {topLocations && topLocations.length && (
+                        {topLocations && topLocations.length ? (
                             <Fragment>
                                 {this.renderHighestRated()}
                             </Fragment>
+                        ): (
+                            <div className="mx-auto errorMessage">
+                                <p>We're working on gathering more information about your community. Please come back soon!</p>
+                            </div>
                         )}
                     </Row>
                 </Container>

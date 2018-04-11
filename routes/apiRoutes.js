@@ -34,7 +34,9 @@ router.put('/events/:id', eventsController.updateEvent);
 // Update attendees
 router.put('/attendees/:id', eventsController.updateAttendees);
 router.post('/rsvp/:username', eventsController.updateRsvp);
-router.get('/rsvp/:username', eventsController.getRsvp)
+
+// Get upcoming events for profile page
+router.get('/rsvp/:username', eventsController.getRsvp);
 
 // Delete an event
 router.delete('/events/:id', eventsController.remove);
