@@ -1,5 +1,4 @@
 .listButton {
-    margin: 5px;
     width: 90px;
     float: right;
     text-transform: uppercase;
@@ -10,12 +9,12 @@
 
 .listBorder {
     border: 1px solid #066a89;
-    margin: 20px 0;
+    /* margin: 20px 0; */
     box-shadow: 0 0 10px #ddd;
 }
 
 .listColor {
-    background-color: #ddd;
+    background-color: #eee;
     color: #066a89;
     margin: 15px;
 }
