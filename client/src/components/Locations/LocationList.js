@@ -63,7 +63,6 @@ class LocationList extends Component {
     }
 
     render() {
-        const { myLocations } = this.props;
         const { locations } = this.state;
         return (
             <Fragment>

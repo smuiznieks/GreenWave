@@ -27,7 +27,7 @@ export const Navigation = (props) => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/"><img src={require("./imgs/logo.png")} className="logo" /></a>
+            <a className="navbar-brand" href="/"><img alt="GreenWave" src={require("./imgs/logo.png")} className="logo" /></a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>

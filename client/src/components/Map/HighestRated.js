@@ -17,7 +17,7 @@ class HighestRated extends Component {
                             <div className="cardBorder">
                                 <div className="rating">1</div>
                                 <Card body className="cardColor">
-                                    <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
+                                    <CardTitle body="true" className="ratedTitle">Special Title Treatment</CardTitle>
                                     <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
                                 </Card>
                             </div>
@@ -26,7 +26,7 @@ class HighestRated extends Component {
                             <div className="cardBorder">
                                 <div className="rating">2</div>
                                 <Card body className="cardColor">
-                                    <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
+                                    <CardTitle body="true" className="ratedTitle">Special Title Treatment</CardTitle>
                                     <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
                                 </Card>
                             </div>
@@ -35,7 +35,7 @@ class HighestRated extends Component {
                             <div className="cardBorder">
                                 <div className="rating">3</div>
                                 <Card body className="cardColor">
-                                    <CardTitle body className="ratedTitle">Special Title Treatment</CardTitle>
+                                    <CardTitle body="true" className="ratedTitle">Special Title Treatment</CardTitle>
                                     <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
                                 </Card>
                             </div>

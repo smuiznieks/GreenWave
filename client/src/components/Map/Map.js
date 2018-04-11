@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { compose, withProps, withStateHandlers } from "recompose";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import { InfoBox } from "react-google-maps/lib/components/addons/InfoBox";
 import API from "../../utils/API";
 import "./map.css";
-import { ScoreBtn } from "./ScoreBtn";
+// import { ScoreBtn } from "./ScoreBtn";
 import { Vote } from "./Vote";
-import { HighestRated } from "./HighestRated";
-
-
+// import { HighestRated } from "./HighestRated";
 
 
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
 import { withUser } from '../../services/withUser';
 import './HomePage.css';
 
