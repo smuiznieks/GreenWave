@@ -51,9 +51,9 @@ class HomePage extends Component {
 
 					<h2><strong>GreenWave</strong> is a community of environmentally<br />
 						conscious individuals looking to promote<br />
-						more sustainable living in their local communities</h2>
+						more sustainable living locally.</h2>
 
-					<h2>Join the GreenWave Community!</h2>
+					<h1 style={{color: "white"}}>Join us!</h1>
 
 				</div>
 

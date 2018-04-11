@@ -31,6 +31,12 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     },
 
+    getHighestRated: function(req, res) {
+        db.Location.find({}).limit(3).sort({ score: -1 })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+
     updateLocation: function(req, res) {
         db.Location.findOneAndUpdate({ _id: req.params.id }, req.body)
         .then(dbModel => res.json(dbModel))

@@ -1,9 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Container, Row, Col, Card, CardTitle, CardText } from 'reactstrap';
-
+import API from '../../utils/API';
 
 class HighestRated extends Component {
+    state = {
+        topLocations: null
+    };
+
+    loadHighestRated() {
+        API.getHighestRated()
+		.then(res => this.setState({ topLocations: res.data }))
+        .catch(err => console.log(err));
+    }
+
+    componentDidMount() {
+        this.loadHighestRated();
+    }
+
+    renderHighestRated() {
+        return (
+            this.state.topLocations.map((topLocation, index) => {
+                return (
+                    <Col md="4" key={index}>
+                        <div className="cardBorder">
+                            <div className="rating">{index + 1}</div>
+                            <Card body className="cardColor">
+                                <CardTitle body="true" className="ratedTitle">{topLocation.title}</CardTitle>
+                                <CardText>{topLocation.address}<br />Category: {topLocation.category}<br />Green Factor: {topLocation.score}</CardText>
+                            </Card>
+                        </div>
+                    </Col>
+                )
+            })
+        )
+    }
+
     render() {
+        const { topLocations } = this.state;   
+        console.log(this.state.topLocations);   
         return (
             <div>
                 <Container>
@@ -13,33 +47,11 @@ class HighestRated extends Component {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md="4">
-                            <div className="cardBorder">
-                                <div className="rating">1</div>
-                                <Card body className="cardColor">
-                                    <CardTitle body="true" className="ratedTitle">Special Title Treatment</CardTitle>
-                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                </Card>
-                            </div>
-                        </Col>
-                        <Col md="4">
-                            <div className="cardBorder">
-                                <div className="rating">2</div>
-                                <Card body className="cardColor">
-                                    <CardTitle body="true" className="ratedTitle">Special Title Treatment</CardTitle>
-                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                </Card>
-                            </div>
-                        </Col>
-                        <Col md="4">
-                            <div className="cardBorder">
-                                <div className="rating">3</div>
-                                <Card body className="cardColor">
-                                    <CardTitle body="true" className="ratedTitle">Special Title Treatment</CardTitle>
-                                    <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                </Card>
-                            </div>
-                        </Col>
+                        {topLocations && topLocations.length && (
+                            <Fragment>
+                                {this.renderHighestRated()}
+                            </Fragment>
+                        )}
                     </Row>
                 </Container>
             </div>

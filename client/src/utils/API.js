@@ -70,6 +70,11 @@ export default {
         return axios.get('/api/locations');
     },
 
+    // Get highest rated locations
+    getHighestRated: function() {
+        return axios.get('/api/score');
+    },
+
     deleteLocation: function(id) {
         return axios.delete('/api/locations/' + id);
     }

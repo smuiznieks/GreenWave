@@ -1,0 +1,6 @@
+.errorMessage {
+    border: 1px solid #066a89;
+    color: #066a89;
+    border-radius: 5px;
+    margin: 10px 0px 30px 0px;
+}

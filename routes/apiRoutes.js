@@ -48,6 +48,9 @@ router.get('/locations', locationsController.getAllLocations);
 // Get locations created by current user
 router.get('/locations/:username', locationsController.getMyLocations);
 
+// Get highest rated locations
+router.get('/score', locationsController.getHighestRated);
+
 // Edit an existing location
 router.put('/locations/:id', locationsController.updateLocation);
 

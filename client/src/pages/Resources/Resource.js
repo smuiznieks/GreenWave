@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-    Container, Row, Col, Card, CardText, CardBody, CardLink,
-    CardTitle
-} from 'reactstrap';
+import { Container, Row, Col, Card, CardText, CardBody, CardLink, CardTitle } from 'reactstrap';
 import { withUser } from '../../services/withUser';
 import "./Resource.css";
 
@@ -23,7 +20,7 @@ const Resource = (props) => {
                                 <img width="100%" alt="Cuyahoga Recycles" src={require("./imgs/cuy-recycles.jpg")} />
                                 <CardBody body="true" className="cardBody">
                                     <CardText body="true" className="cardText">The Cuyahoga County Solid Waste District is the leading resource in Cuyahoga County for information and programs that reduce the environmental impact of waste.</CardText>
-                                    <CardLink href="https://cuyahogarecycles.org/" className="btn btn-primary cardLink">Visit Website</CardLink>
+                                    <CardLink href="https://cuyahogarecycles.org/" className="btn btn-primary cardLink" target="blank">Visit Website</CardLink>
                                 </CardBody>
                             </Card>
                         </div>
@@ -37,7 +34,7 @@ const Resource = (props) => {
                                 <img width="100%" alt="Rust Belt Riders" src={require("./imgs/rust-belt-riders.jpg")} />
                                 <CardBody body="true" className="cardBody">
                                     <CardText body="true" className="cardText">Rust Belt Riders’ compost collection service is a simple, affordable way for organizations to make a positive impact on their community and environment.</CardText>
-                                    <CardLink href="https://www.rustbeltriders.com/index.html" className="btn btn-primary cardLink">Visit Website</CardLink>
+                                    <CardLink href="https://www.rustbeltriders.com/index.html" className="btn btn-primary cardLink" target="blank">Visit Website</CardLink>
                                 </CardBody>
                             </Card>
                         </div>
@@ -51,7 +48,7 @@ const Resource = (props) => {
                                 <img width="100%" alt="UHBikes" src={require("./imgs/uhbikes.jpg")} />
                                 <CardBody body="true" className="cardBody">
                                     <CardText body="true" className="cardText">UHBikes allows you to quickly, and easily book a bike, get around, and lock an return with ease. 250 bikes. 29 stations. Skip the drive, and go for a ride!</CardText>
-                                    <CardLink href="http://uhbikes.com/" className="btn btn-primary cardLink">Visit Website</CardLink>
+                                    <CardLink href="http://uhbikes.com/" className="btn btn-primary cardLink" target="blank">Visit Website</CardLink>
                                 </CardBody>
                             </Card>
                         </div>
@@ -69,7 +66,7 @@ const Resource = (props) => {
                                 <img width="100%" alt="Office of Sustainability" src={require("./imgs/office-sustain.jpg")} />
                                 <CardBody body="true" className="cardBody">
                                     <CardText body="true" className="cardText">The Office of Sustainability uses Cleveland's wealth of assets by working with the community to improve the economic, environmental, and social well-being of its citizens. </CardText>
-                                    <CardLink href="http://www.city.cleveland.oh.us/CityofCleveland/Home/Government/CityAgencies/OfficeOfSustainability" className="btn btn-primary cardLink">Visit Website</CardLink>
+                                    <CardLink href="http://www.city.cleveland.oh.us/CityofCleveland/Home/Government/CityAgencies/OfficeOfSustainability" className="btn btn-primary cardLink" target="blank">Visit Website</CardLink>
                                 </CardBody>
                             </Card>
                         </div>
@@ -83,7 +80,7 @@ const Resource = (props) => {
                                 <img width="100%" alt="Sustainable Cleveland" src={require("./imgs/sustainable-cle.jpg")} />
                                 <CardBody body="true" className="cardBody">
                                     <CardText body="true" className="cardText">Sustainable Cleveland engages people to design and develop a thriving Cleveland region that leverages its wealth of assets to build economic, social and environmental well-being for all.</CardText>
-                                    <CardLink href="http://www.sustainablecleveland.org/sustainable_cleveland" className="btn btn-primary cardLink">Visit Website</CardLink>
+                                    <CardLink href="http://www.sustainablecleveland.org/sustainable_cleveland" className="btn btn-primary cardLink" target="blank">Visit Website</CardLink>
                                 </CardBody>
                             </Card>
                         </div>
