@@ -1,10 +1,16 @@
 .mapWindow {
     background-color: #fff; 
     padding: 15px; 
-    width: 20em;
+    width: 25em;
     border-radius: 3px;
     box-shadow: 0 0 15px #444;
     font-family: 'Raleway', sans-serif;
+    opacity: 0.9;
+}
+
+.mapWindow p {
+    margin: 0;
+    padding: 5px 0;
 }
 
 .mapWindow h5 {
@@ -12,6 +18,8 @@
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 0.06em;
+    margin: 0;
+    padding: 5px 0;
 }
 
 .mapBoldText {
@@ -30,12 +38,12 @@
 
 .cardBorder {
     border: 1px solid #066a89;
-    margin: 20px 0;
+    margin: 20px 15px;
     box-shadow: 0 0 10px #ddd;
 }
 
 .cardColor {
-    background-color: #ddd;
+    background-color: #eee;
     color: #066a89;
     text-align: center;
     margin: 15px;
