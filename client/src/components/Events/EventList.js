@@ -24,6 +24,11 @@ class EventList extends Component {
         this.loadEvents();
     }
 
+    shouldComponentUpdate() {
+        this.loadEvents();
+        return true;
+    }
+
     deleteEvent = (id) => {
         API.deleteEvent(id)
         .then(res => this.loadEvents())
