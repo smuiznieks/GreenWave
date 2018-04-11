@@ -5,16 +5,15 @@
 ### *About This Website*
 This website is a digital information hub.  Not only can users find out about sustainable living activities in their local community, but they can also organize their own activities through this website.  The user will only be able to view the main page of the website until he logs in or creates an account.  Once he is logged into the website, he is given several choices of pages he can pull up through the nav bar.  The user is given a personalized account with the website.   With this personalization, the user can choose and save a location of interest.  The user can choose his area of local residence and other locations of interest.  He can also plan and organize his own events.  The website can be used to advertise and enroll attendees in events that the user creates.  Once a location or event is saved, it can also be managed and edited.  The user can go to another page to view all the activities scheduled in an area.  Another page contains a google map for information and navigation.  Environmentally aware users will be glad to use the resource center page to find additonal links to websites containing sustainable living initiatives and information.  The website has great potential in its usage.  As users increase in numbers, more events will be arranged and announced.  The resource center will be able to modify its listing to highlight user favorites and recommendations.  The website is an excellent structure and platform to launch a dynamic exchange of information and initiatives. 
 
-...
+
 ### *A Useful Project*
 With the growing population and the renewed concern for the welfare of the environment, consumers play a vital and optional role in helping with sustainable living in their local communities.  A website like this makes it easier to participate in environmentally aware activities.  Someone who might not recycle may be influenced to do so if they come upon a tool like this website while using the internet.  This website makes it easier to be helpful.  A person who is very concerned about the environment will have a platform for more advanced organizing efforts through this website.
-...
 
 ### *Production*
 The project was started with a Create React App as a boilerplate. Current versions of React and React-Router-Dom were used for this assignment. To save users, events, and locations for the website, a MongoDB database was used. Also utilized in the website development were Express, Axios, Mongoose, Google Maps, and Path.  Passport was used for authentication.  Bootstrap was used in the html.  Util and Reactstrap were used for the carousel of images on the login page.  The website uses a color scheme of green and blue.
 
 ### *Deployment (Heroku)*
-The website is deployed on Heroku at 
+The website is deployed on Heroku at https://shielded-citadel-50208.herokuapp.com/
 
 
 ### *How It Works*
