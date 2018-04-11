@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { FormBtn, Input } from '../../components/Form';
 import API from '../../utils/API';
+import './Create.css';
 
 class Create extends Component {
     state = {
@@ -33,7 +34,7 @@ class Create extends Component {
         //Check if a valid email was entered
         if (!this.validateEmail(email)) {
             this.setState({
-                error: 'You must enter a valid email'
+                error: 'Please enter a valid email.'
             });
             return;
         }
@@ -77,7 +78,7 @@ class Create extends Component {
                             <h1>Join the Movement</h1>
                             {error &&
                                 <div>
-                                    {error}
+                                    <p className="text-center errorMessage">{error}</p>
                                 </div>
                             }
                             <label htmlFor="email">Email</label>

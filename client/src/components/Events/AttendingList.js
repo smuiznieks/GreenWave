@@ -18,7 +18,6 @@ class AttendingList extends Component {
             for (var i = 0; i < res.data.length; i++) {
                 eventInfo.push(res.data[i].eventId)
             }
-            console.log(eventInfo);
         })
         .then(res => this.setState({ events: eventInfo }))
         .catch(err => console.log(err))

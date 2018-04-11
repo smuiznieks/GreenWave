@@ -64,7 +64,7 @@ class Login extends Component {
               <h1>Log In</h1>
               {error &&
                 <div>
-                  {error}
+                  <p className="errorMessage text-center">{error}</p>
                 </div>
               }
               <label htmlFor="username">Username</label>
