@@ -49,13 +49,10 @@
 
 .shareIcon {
     font-size: 1.8em;
-    text-align: center;
 }
 
 .SocialMediaShareButton {
-    padding: 10px 20px;
-    position: relative;
-    bottom: 10px;
+    padding: 0px 20px;
 }
 
 button.eventRSVP {
@@ -66,7 +63,16 @@ button.eventRSVP {
 }
 
 .viewDetails:hover {
-    color: #64cbe6;
+    color: #9cd2a2;
+}
+
+.eventDescription {
+    margin-top: 0px;
+}
+
+.eventInfo {
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 #isEditing {

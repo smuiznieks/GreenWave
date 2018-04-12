@@ -22,10 +22,10 @@ class LocationList extends Component {
         this.loadLocations();
     }
 
-    // shouldComponentUpdate() {
-    //     this.loadLocations();
-    //     return true;
-    // }
+    shouldComponentUpdate() {
+        this.loadLocations();
+        return true;
+    }
 
     deleteLocation = (id) => {
         API.deleteLocation(id)

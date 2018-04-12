@@ -42,14 +42,6 @@ class UpcomingEvents extends Component {
                             <i className="fas fa-times eventRSVP"></i>
                         </button>
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
-                        <CardText>
-                            When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendees.length}
-                            {event.description && 
-                                <Collapsible trigger="Details" className="viewDetails">
-                                    <p>{event.description}</p>
-                                </Collapsible>
-                            }
-                        </CardText>
                         <Row>
                             <FacebookShareButton url="https://github.com" quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">
                                 <i className="fab fa-facebook-square shareIcon" />
@@ -61,6 +53,14 @@ class UpcomingEvents extends Component {
                                 <i className="fas fa-envelope-square shareIcon" />
                             </EmailShareButton>
                         </Row>
+                        <CardText>
+                            When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendees.length}
+                            {event.description && 
+                                <Collapsible trigger="Details" className="viewDetails">
+                                    <p>{event.description}</p>
+                                </Collapsible>
+                            }
+                        </CardText>
                     </ListItem>
                 )
             })

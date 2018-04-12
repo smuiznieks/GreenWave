@@ -25,10 +25,10 @@ class EventList extends Component {
         this.loadEvents();
     }
 
-    // shouldComponentUpdate() {
-    //     this.loadEvents();
-    //     return true;
-    // }
+    shouldComponentUpdate() {
+        this.loadEvents();
+        return true;
+    }
 
     deleteEvent = (id) => {
         API.deleteEvent({
@@ -63,12 +63,19 @@ class EventList extends Component {
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
                         <Row>
                             <Col sm="8">
-                                <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendees.length}
-                                    {event.description && 
-                                        <Collapsible trigger="Details" className="viewDetails">
-                                            <p>{event.description}</p>
-                                        </Collapsible>
-                                    }
+                                <Row>
+                                    <FacebookShareButton url={url} quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">
+                                        <i className="fab fa-facebook-square shareIcon" />
+                                    </FacebookShareButton>
+                                    <TwitterShareButton url={url} title={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} >
+                                        <i className="fab fa-twitter-square shareIcon" />
+                                    </TwitterShareButton>
+                                    <EmailShareButton url={url} subject={"Join me at " + event.title} body={"Hi there! Check out this event I found on GreenWave.com\n\n" + event.title + " on " + event.date + " at " + event.location + ".\n\n" + event.description + "\n\nHope you can make it! #GreenCityBlueLake" }>
+                                        <i className="fas fa-envelope-square shareIcon" />
+                                    </EmailShareButton>
+                                </Row>
+                                <CardText className="eventInfo">
+                                    When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendees.length}
                                 </CardText>
                             </Col>
                             <Col sm="4">
@@ -77,17 +84,13 @@ class EventList extends Component {
                                 {!Owner && <ListBtn onClick={()=> this.handleRSVP(event._id)}>RSVP</ListBtn>}
                             </Col>
                         </Row>
-                        <Row>
-                            <FacebookShareButton url={url} quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">
-                                <i className="fab fa-facebook-square shareIcon" />
-                            </FacebookShareButton>
-                            <TwitterShareButton url={url} title={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} >
-                                <i className="fab fa-twitter-square shareIcon" />
-                            </TwitterShareButton>
-                            <EmailShareButton url={url} subject={"Join me at " + event.title} body={"Hi there! Check out this event I found on GreenWave.com\n\n" + event.title + " on " + event.date + " at " + event.location + ".\n\n" + event.description + "\n\nHope you can make it! #GreenCityBlueLake" }>
-                                <i className="fas fa-envelope-square shareIcon" />
-                            </EmailShareButton>
-                        </Row>
+                        <CardText className="eventDescription">
+                            {event.description && 
+                                <Collapsible trigger="Details" className="viewDetails">
+                                    {event.description}
+                                </Collapsible>
+                            }
+                        </CardText>
                     </ListItem>
                 )
             })
