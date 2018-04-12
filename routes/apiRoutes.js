@@ -38,6 +38,9 @@ router.post('/rsvp/:username', eventsController.updateRsvp);
 // Get upcoming events for profile page
 router.get('/rsvp/:username', eventsController.getRsvp);
 
+// Remove rsvo
+router.delete('/rsvp/:user', eventsController.removeRSVP);
+
 // Delete an event
 router.delete('/events/:id', eventsController.remove);
 

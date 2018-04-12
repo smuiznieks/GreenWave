@@ -73,7 +73,9 @@ class Create extends Component {
         return (
             <Container>
                 <Row style={{marginBottom: 20}}>
-                    <Col lg={{ size: 4, offset: 4}} md={{ size: 6, offset: 3}} sm="12">
+                    <Col lg="4" md="3" sm="0">
+                    </Col>
+                    <Col lg="4" md="6" sm="12">
                         <form>
                             <h1>Join the Movement</h1>
                             {error &&

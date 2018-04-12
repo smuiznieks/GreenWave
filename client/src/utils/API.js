@@ -50,6 +50,10 @@ export default {
         return axios.delete('/api/events/' + id);
     },
 
+    deleteRSVP: function(data) {
+        return axios.delete(`/api/rsvp/${data.user}` + data);
+    },
+
     // Create new location
     createLocation: function(locData) {
         return axios.post('/api/locations', locData)

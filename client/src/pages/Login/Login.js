@@ -59,7 +59,9 @@ class Login extends Component {
     return (
       <Container>
         <Row style={{marginBottom: 20}}>
-          <Col lg={{ size: 4, offset: 2}} md="6" sm="12">
+          <Col lg="2" md="0" sm="0">
+          </Col>
+          <Col lg="4" md="6" sm="12">
             <form onSubmit={this.handleLogin}>
               <h1>Log In</h1>
               {error &&

@@ -22,10 +22,10 @@ class LocationList extends Component {
         this.loadLocations();
     }
 
-    shouldComponentUpdate() {
-        this.loadLocations();
-        return true;
-    }
+    // shouldComponentUpdate() {
+    //     this.loadLocations();
+    //     return true;
+    // }
 
     deleteLocation = (id) => {
         API.deleteLocation(id)
@@ -35,6 +35,7 @@ class LocationList extends Component {
 
     renderLocations() {
         const { username } = this.props.user;
+        const url = "https://shielded-citadel-50208.herokuapp.com/";
         return (
             this.state.locations.map(location => {
                 const Owner = location.createdBy === username;
@@ -51,13 +52,13 @@ class LocationList extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <FacebookShareButton url="https://github.com" quote={"Check out this neighborhood gem I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!"} hashtag="#GreenCityBlueLake">
+                            <FacebookShareButton url={url} quote={"Check out this neighborhood gem I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!"} hashtag="#GreenCityBlueLake">
                                 <i className="fab fa-facebook-square shareIcon" />
                             </FacebookShareButton>
-                            <TwitterShareButton url="https://github.com" title={"Check out this neighborhood gem I found on GreenWave.com --- " + location.title + " at " + location.address + ". It even has a Green Factor score of " + location.score + "!!"}>
+                            <TwitterShareButton url={url} title={"Check out this neighborhood gem I found on GreenWave.com --- " + location.title + " at " + location.address + ". It even has a Green Factor score of " + location.score + "!!"}>
                                 <i className="fab fa-twitter-square shareIcon" />
                             </TwitterShareButton>
-                            <EmailShareButton url="https://github.com" subject={"Neighborhood Gem --- " + location.title} body={"Hi there! Check out this awesome spot I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!\n\n#GreenCityBlueLake" }>
+                            <EmailShareButton url={url} subject={"Neighborhood Gem --- " + location.title} body={"Hi there! Check out this awesome spot I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!\n\n#GreenCityBlueLake" }>
                                 <i className="fas fa-envelope-square shareIcon" />
                             </EmailShareButton>
                         </Row>

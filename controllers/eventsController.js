@@ -42,5 +42,11 @@ module.exports = {
     .then(dbModel => dbModel.remove())
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
+  },
+  removeRSVP: function(req, res) {
+    db.Rsvp.find({ user: req.params.user }).where({eventId: data.eventId})
+    .then(dbModel => dbModel.remove())
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   }
 };

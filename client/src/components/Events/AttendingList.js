@@ -27,12 +27,24 @@ class AttendingList extends Component {
         this.loadRSVPs();
     }
 
+    handleDelete = (id) => {
+        API.deleteRSVP({
+            user: this.props.user.username,
+            eventId: id
+        })
+        .then(res => this.loadRSVPs())
+        .catch(err => console.log(err))
+    }
+
     renderEvents() {
         const { username } = this.props.user; 
         return (
             this.state.events.map(event => {
                 return (
                     <ListItem key={event._id}>
+                        <button type="button" className="eventRSVP"  onClick={() => this.handleDelete(event._id)}>
+                            <i class="fas fa-times"></i>
+                        </button>
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
                         <CardText>
                             When: {event.date} at {event.time}<br />Where: {event.location}<br />{event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}

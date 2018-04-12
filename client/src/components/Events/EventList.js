@@ -24,10 +24,10 @@ class EventList extends Component {
         this.loadEvents();
     }
 
-    shouldComponentUpdate() {
-        this.loadEvents();
-        return true;
-    }
+    // shouldComponentUpdate() {
+    //     this.loadEvents();
+    //     return true;
+    // }
 
     deleteEvent = (id) => {
         API.deleteEvent(id)
@@ -50,6 +50,7 @@ class EventList extends Component {
 
     renderEvents() {
         const { username } = this.props.user;
+        const url = "https://shielded-citadel-50208.herokuapp.com/";
         return (
             this.state.events.map(event => {
                 const Owner = event.createdBy === username;
@@ -67,13 +68,13 @@ class EventList extends Component {
                             </Col>
                         </Row>
                         <Row>
-                            <FacebookShareButton url="https://github.com" quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">
+                            <FacebookShareButton url={url} quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">
                                 <i className="fab fa-facebook-square shareIcon" />
                             </FacebookShareButton>
-                            <TwitterShareButton url="https://github.com" title={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} >
+                            <TwitterShareButton url={url} title={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} >
                                 <i className="fab fa-twitter-square shareIcon" />
                             </TwitterShareButton>
-                            <EmailShareButton url="https://github.com" subject={"Join me at " + event.title} body={"Hi there! Check out this event I found on GreenWave.com\n\n" + event.title + " on " + event.date + " at " + event.location + ".\n\n" + event.description + "\n\nHope you can make it! #GreenCityBlueLake" }>
+                            <EmailShareButton url={url} subject={"Join me at " + event.title} body={"Hi there! Check out this event I found on GreenWave.com\n\n" + event.title + " on " + event.date + " at " + event.location + ".\n\n" + event.description + "\n\nHope you can make it! #GreenCityBlueLake" }>
                                 <i className="fas fa-envelope-square shareIcon" />
                             </EmailShareButton>
                         </Row>

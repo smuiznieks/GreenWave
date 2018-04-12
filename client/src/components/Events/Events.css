@@ -54,6 +54,8 @@
 
 .SocialMediaShareButton {
     padding: 10px 20px;
+    position: relative;
+    bottom: 10px;
 }
 
 #isEditing {
@@ -93,5 +95,9 @@
         font-weight: 700;
         letter-spacing: 0.04em;
         font-size: 1em;
+    }
+
+    #isEditing, .listButton {
+        margin-bottom: 20px;
     }
 }
