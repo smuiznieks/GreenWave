@@ -67,7 +67,7 @@ class EventModal extends Component {
         } else {
             promise = API.createEvent({
                 ...eventData,
-                createdBy: this.props.user.username
+                createdBy: this.props.user.id
             });
         }
 
@@ -107,7 +107,7 @@ class EventModal extends Component {
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">{isEditing ? "Edit Your Event" : "Create Event"}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
-                            <span aria-hidden="true">&times;</span>
+                                <i className="fas fa-times"></i>
                             </button>
                         </div>
                         <div className="modal-body">

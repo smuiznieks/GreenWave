@@ -26,20 +26,20 @@ router.post('/events', eventsController.createEvent);
 router.get('/events', eventsController.findAll);
 
 // Get events created by current user
-router.get('/events/:username', eventsController.getMyEvents);
+router.get('/events/:userId', eventsController.getMyEvents);
 
 // Edit an existing event
 router.put('/events/:id', eventsController.updateEvent);
 
 // Update attendees
 router.put('/attendees/:id', eventsController.updateAttendees);
-router.post('/rsvp/:username', eventsController.updateRsvp);
+router.put('/users/:userId', userController.updateRsvp);
 
 // Get upcoming events for profile page
-router.get('/rsvp/:username', eventsController.getRsvp);
+router.get('/users/:userId', userController.getUpcomingEvents);
 
-// Remove rsvo
-router.delete('/rsvp/:user', eventsController.removeRSVP);
+// Remove rsvp
+router.put('/upcomingEvents/:userId', userController.removeRSVP);
 
 // Delete an event
 router.delete('/events/:id', eventsController.remove);

@@ -28,8 +28,8 @@ const EventSchema= new Schema({
 	},
 
 	createdBy:{
-		type: String,
-		required: true
+		type: Schema.Types.ObjectId,
+		ref: 'User'
 	},
 
 	attendees:{

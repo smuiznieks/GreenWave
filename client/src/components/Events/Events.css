@@ -58,6 +58,13 @@
     bottom: 10px;
 }
 
+button.eventRSVP {
+    float: right;
+    color: #066a89;
+    border: none;
+    background-color: #eee;
+}
+
 #isEditing {
     width: 90px;
     float: right;

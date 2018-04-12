@@ -63,5 +63,23 @@ module.exports = {
         res.json({
             message: 'You have been logged out.'
         });
+    },
+
+    updateRsvp: function(req, res) {
+        db.User.update({_id: req.params.userId}, { $push: { upcomingEvents: req.body.eventId }})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+
+    getUpcomingEvents: function(req, res) {
+        db.User.findOne({_id: req.params.userId}).populate('upcomingEvents')
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    },
+
+    removeRSVP: function(req, res) {
+        db.User.update({_id: req.params.userId}, { $pull: { upcomingEvents: req.body.eventId }})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
     }
 };

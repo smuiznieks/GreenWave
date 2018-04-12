@@ -10,7 +10,13 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String
-  }
+  },
+  upcomingEvents: [
+    {
+		  type: mongoose.Schema.Types.ObjectId,
+      ref: 'Event'
+    }
+  ]
 });
 
 UserSchema.pre('save', function(next) {

@@ -6,44 +6,39 @@ import { List, ListItem, ListBtn } from "../List";
 import { CardText, CardTitle } from 'reactstrap';
 import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
 
-class AttendingList extends Component {
+class UpcomingEvents extends Component {
     state = {
-        events: null
+        events: []
     };
 
-    loadRSVPs() {
+    loadUpcomingEvents() {
         let eventInfo = [];
-        API.getMyRSVPs(this.props.user.username)
-        .then(function(res) {
-            for (var i = 0; i < res.data.length; i++) {
-                eventInfo.push(res.data[i].eventId)
-            }
-        })
-        .then(res => this.setState({ events: eventInfo }))
+        API.getUpcomingEvents(this.props.user.id)
+        .then(res => this.setState({events: res.data.upcomingEvents}))
         .catch(err => console.log(err))
     }
 
     componentDidMount() {
-        this.loadRSVPs();
+        this.loadUpcomingEvents();
     }
 
-    handleDelete = (id) => {
+    handleDelete = (eventId) => {
         API.deleteRSVP({
-            user: this.props.user.username,
-            eventId: id
+            userId: this.props.user.id,
+            eventId: eventId
         })
-        .then(res => this.loadRSVPs())
+        .then(res => this.loadUpcomingEvents())
         .catch(err => console.log(err))
     }
 
     renderEvents() {
-        const { username } = this.props.user; 
+        const { username, id } = this.props.user;
         return (
             this.state.events.map(event => {
                 return (
                     <ListItem key={event._id}>
                         <button type="button" className="eventRSVP"  onClick={() => this.handleDelete(event._id)}>
-                            <i class="fas fa-times"></i>
+                            <i className="fas fa-times eventRSVP"></i>
                         </button>
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
                         <CardText>
@@ -89,4 +84,4 @@ class AttendingList extends Component {
     }
 }
 
-export default withUser(AttendingList);
+export default withUser(UpcomingEvents);

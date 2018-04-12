@@ -107,7 +107,7 @@ class LocationModal extends Component {
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">{isEditing ? "Edit Your Location" : "Create Location"}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
-                            <span aria-hidden="true">&times;</span>
+                                <i className="fas fa-times"></i>
                             </button>
                         </div>
                         <div className="modal-body">

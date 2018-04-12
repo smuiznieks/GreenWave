@@ -14,7 +14,7 @@ class EventList extends Component {
     };
 
     loadEvents() {
-        const promise = this.props.myEvents ? API.getMyEvents(this.props.user.username) : API.getAllEvents();
+        const promise = this.props.myEvents ? API.getMyEvents(this.props.user.id) : API.getAllEvents();
         promise
         .then(res => this.setState({ events: res.data }))
         .catch(err => console.log(err));
@@ -30,18 +30,21 @@ class EventList extends Component {
     // }
 
     deleteEvent = (id) => {
-        API.deleteEvent(id)
+        API.deleteEvent({
+            userId: this.props.user.id,
+            eventId: id
+        })
         .then(res => this.loadEvents())
         .catch(err => console.log(err));
     }
 
     handleRSVP = (id) => {
-        API.updateAttendees({
-            attendees: this.props.user.username,
-            _id: id
-        })
+        // API.updateAttendees({
+        //     attendees: this.props.user.username,
+        //     _id: id
+        // })
         API.updateRSVP({
-            user: this.props.user.username,
+            userId: this.props.user.id,
             eventId: id
         })
         .then(res => this.loadEvents())
@@ -49,11 +52,11 @@ class EventList extends Component {
     }
 
     renderEvents() {
-        const { username } = this.props.user;
+        const { username, id } = this.props.user;
         const url = "https://shielded-citadel-50208.herokuapp.com/";
         return (
             this.state.events.map(event => {
-                const Owner = event.createdBy === username;
+                const Owner = event.createdBy === id;
                 return (
                     <ListItem key={event._id}>
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
