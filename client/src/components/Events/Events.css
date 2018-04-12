@@ -65,6 +65,10 @@ button.eventRSVP {
     background-color: #eee;
 }
 
+.viewDetails:hover {
+    color: #64cbe6;
+}
+
 #isEditing {
     width: 90px;
     float: right;
