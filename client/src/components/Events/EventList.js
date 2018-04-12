@@ -40,10 +40,10 @@ class EventList extends Component {
     }
 
     handleRSVP = (id) => {
-        // API.updateAttendees({
-        //     attendees: this.props.user.username,
-        //     _id: id
-        // })
+        API.updateAttendees({
+            attendees: this.props.user.username,
+            _id: id
+        })
         API.updateRSVP({
             userId: this.props.user.id,
             eventId: id
@@ -87,7 +87,7 @@ class EventList extends Component {
                         <CardText className="eventDescription">
                             {event.description && 
                                 <Collapsible trigger="Details" className="viewDetails">
-                                    {event.description}
+                                    <p>{event.description}</p>
                                 </Collapsible>
                             }
                         </CardText>

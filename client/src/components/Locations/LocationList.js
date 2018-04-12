@@ -44,23 +44,23 @@ class LocationList extends Component {
                         <CardTitle className="profileTitle">{location.title}</CardTitle>
                         <Row>
                             <Col sm="8">
+                                <Row>
+                                    <FacebookShareButton url={url} quote={"Check out this neighborhood gem I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!"} hashtag="#GreenCityBlueLake">
+                                        <i className="fab fa-facebook-square shareIcon" />
+                                    </FacebookShareButton>
+                                    <TwitterShareButton url={url} title={"Check out this neighborhood gem I found on GreenWave.com --- " + location.title + " at " + location.address + ". It even has a Green Factor score of " + location.score + "!!"}>
+                                        <i className="fab fa-twitter-square shareIcon" />
+                                    </TwitterShareButton>
+                                    <EmailShareButton url={url} subject={"Neighborhood Gem --- " + location.title} body={"Hi there! Check out this awesome spot I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!\n\n#GreenCityBlueLake" }>
+                                        <i className="fas fa-envelope-square shareIcon" />
+                                    </EmailShareButton>
+                                </Row>
                                 <CardText>Address: {location.address}<br />Category: {location.category}<br />Green Factor: {location.score}</CardText>
                             </Col>
                             <Col sm="4">
                                 {Owner && <LocationModal location={location} />}
                                 {Owner && <ListBtn onClick={() => this.deleteLocation(location._id)}>Delete</ListBtn>}
                             </Col>
-                        </Row>
-                        <Row>
-                            <FacebookShareButton url={url} quote={"Check out this neighborhood gem I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!"} hashtag="#GreenCityBlueLake">
-                                <i className="fab fa-facebook-square shareIcon" />
-                            </FacebookShareButton>
-                            <TwitterShareButton url={url} title={"Check out this neighborhood gem I found on GreenWave.com --- " + location.title + " at " + location.address + ". It even has a Green Factor score of " + location.score + "!!"}>
-                                <i className="fab fa-twitter-square shareIcon" />
-                            </TwitterShareButton>
-                            <EmailShareButton url={url} subject={"Neighborhood Gem --- " + location.title} body={"Hi there! Check out this awesome spot I found on GreenWave.com\n\n" + location.title + " at " + location.address + "\n\nIt even has a Green Factor score of " + location.score + "!!\n\n#GreenCityBlueLake" }>
-                                <i className="fas fa-envelope-square shareIcon" />
-                            </EmailShareButton>
                         </Row>
                     </ListItem>
                 )
