@@ -12,7 +12,7 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
   getMyEvents: function(req, res) {
-    db.Event.find({ createdBy: req.params.username }).sort({ date: 1 })
+    db.Event.find({ createdBy: req.params.userId }).sort({ date: 1 })
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
@@ -26,25 +26,8 @@ module.exports = {
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
-  updateRsvp: function(req, res) {
-    db.Rsvp.create(req.body)
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-  },
-  getRsvp: function(req, res) {
-    db.Rsvp.find({ user: req.params.username})
-    .populate({ path: 'eventId', options: { sort: { 'date': 1 }}})
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-  },
   remove: function(req, res) {
     db.Event.findById({ _id: req.params.id })
-    .then(dbModel => dbModel.remove())
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-  },
-  removeRSVP: function(req, res) {
-    db.Rsvp.find({ user: req.params.user }).where({eventId: data.eventId})
     .then(dbModel => dbModel.remove())
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col } from 'reactstrap';
 import { withUser } from '../../services/withUser';
-import { AttendingList, EventList, EventModal} from '../../components/Events';
+import { UpcomingEvents, EventList, EventModal} from '../../components/Events';
 import { LocationList, LocationModal} from "../../components/Locations";
 
 class Profile extends Component {
@@ -32,7 +32,7 @@ class Profile extends Component {
                         <hr />
                         <Row>
                             <Col sm="12">
-                                <AttendingList upcomingEvents />
+                                <UpcomingEvents />
                             </Col>
                         </Row>
                         <Row style={{marginBottom: 40}}>

@@ -27,17 +27,17 @@ export default {
     },
 
     updateRSVP: function(eventData) {
-        return axios.post(`/api/rsvp/{${eventData.user}`, eventData);
+        return axios.put(`/api/users/${eventData.userId}`, eventData);
     },
 
     // Get events created by user
-    getMyEvents: function(username) {
-        return axios.get(`/api/events/${username}`);
+    getMyEvents: function(userId) {
+        return axios.get(`/api/events/${userId}`);
     },
 
     // Get user RSVPs
-    getMyRSVPs: function(username) {
-        return axios.get(`/api/rsvp/${username}`);
+    getUpcomingEvents: function(userId) {
+        return axios.get(`/api/users/${userId}`);
     },
 
     // Get all events
@@ -51,7 +51,7 @@ export default {
     },
 
     deleteRSVP: function(data) {
-        return axios.delete(`/api/rsvp/${data.user}` + data);
+        return axios.put(`/api/upcomingEvents/${data.userId}`, data);
     },
 
     // Create new location
