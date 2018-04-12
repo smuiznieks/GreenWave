@@ -5,6 +5,7 @@ import API from '../../utils/API';
 import { List, ListItem, ListBtn } from "../List";
 import { CardText, CardTitle } from 'reactstrap';
 import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
+import Collapsible from 'react-collapsible';
 
 class UpcomingEvents extends Component {
     state = {
@@ -42,7 +43,12 @@ class UpcomingEvents extends Component {
                         </button>
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
                         <CardText>
-                            When: {event.date} at {event.time}<br />Where: {event.location}<br />{event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}
+                            When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendees.length}
+                            {event.description && 
+                                <Collapsible trigger="Details" className="viewDetails">
+                                    <p>{event.description}</p>
+                                </Collapsible>
+                            }
                         </CardText>
                         <Row>
                             <FacebookShareButton url="https://github.com" quote={"Check out this event I found on GreenWave.com --- " + event.title + " on " + event.date + " at " + event.location + ". Together we can change the world!"} hashtag="#GreenCityBlueLake">

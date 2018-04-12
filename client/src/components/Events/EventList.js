@@ -6,6 +6,7 @@ import EventModal from './EventModal';
 import { List, ListItem, ListBtn } from "../List";
 import { CardText, CardTitle } from 'reactstrap';
 import { FacebookShareButton, TwitterShareButton, EmailShareButton } from 'react-share';
+import Collapsible from 'react-collapsible';
 import "./Events.css";
 
 class EventList extends Component {
@@ -62,7 +63,13 @@ class EventList extends Component {
                         <CardTitle className="profileTitle">{event.title}</CardTitle>
                         <Row>
                             <Col sm="8">
-                                <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />{!Owner && event.description && <span>Description: {event.description}<br /></span>}RSVPs: {event.attendees.length}</CardText>
+                                <CardText>When: {event.date} at {event.time}<br />Where: {event.location}<br />RSVPs: {event.attendees.length}
+                                    {event.description && 
+                                        <Collapsible trigger="Details" className="viewDetails">
+                                            <p>{event.description}</p>
+                                        </Collapsible>
+                                    }
+                                </CardText>
                             </Col>
                             <Col sm="4">
                                 {Owner && <EventModal event={event} />}
